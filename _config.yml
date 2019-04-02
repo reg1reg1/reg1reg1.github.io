@@ -1,9 +1,10 @@
 # Site Info
+theme: jekyll-theme-hacker
 title: Information Security - Yuvraj Singh
-tagline: 'A Jekyll theme based on Lanyon'
+tagline: 'Information Security Blog'
 description: 'A Jekyll theme adapted from <a href="http://lanyon.getpoole.com/" target="_blank">Lanyon</a>. Made by <a href="http://codinfox.github.io" target="_blank">@codinfox</a>.'
 baseurl: "/lanyon"
-url: http://reg1reg1.github.io
+url: https://reg1reg1.github.io
 logo: '/public/logo.png'
 
 # Site configurations
@@ -44,7 +45,7 @@ nav:
   About:          
     - '/about/'
   Github Project: 
-    - 'http://reg1reg1.github.io/'
+    - 'https://reg1reg1.github.io/'
 
 # Where are tags and categories displayed
 tag_page: '/blog/tags/'
