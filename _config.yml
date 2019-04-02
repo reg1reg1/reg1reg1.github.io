@@ -3,7 +3,7 @@ theme: jekyll-theme-hacker
 title: Information Security - Yuvraj Singh
 tagline: 'Information Security Blog'
 description: 'A Jekyll theme adapted from <a href="http://lanyon.getpoole.com/" target="_blank">Lanyon</a>. Made by <a href="http://codinfox.github.io" target="_blank">@codinfox</a>.'
-baseurl: "/lanyon"
+baseurl: "/"
 url: https://reg1reg1.github.io
 logo: '/public/logo.png'
 
