@@ -1,5 +1,5 @@
 # Site Info
-theme: jekyll-theme-hacker
+
 title: Information Security - Yuvraj Singh
 tagline: 'Information Security Blog'
 description: 'A Jekyll theme adapted from <a href="http://lanyon.getpoole.com/" target="_blank">Lanyon</a>. Made by <a href="http://codinfox.github.io" target="_blank">@codinfox</a>.'
@@ -54,3 +54,5 @@ category_page: '/blog/categories/'
 hero:
   image: /public/img/we_will_be_giants_by_yalestewart.jpg
   caption: Original Artwork &copy; <a href="http://yalestewart.deviantart.com/art/We-Will-Be-Giants-370176475">Yale Stewart</a>
+
+theme: jekyll-theme-hacker
