@@ -1,35 +1,13 @@
-## Cybersecurity Rants
+# Cybersecurity Rants
+
+##About Me:
+I am a cyber security graduate student at NYU Tandon (formerly NYU Poly). I have just begun to scale the mountain of cyber security.I am a infosec newbie who loves everything from Cryptography to Systems,from Web Application Security to Penetration testing, from Reversing to Discrete Maths. I aspire to learn more and more about the beauty which is information security. I am a junkie when it comes to cyber security- I am hooked it on bad. I want to use this forum in reaching out and discussing security and technology with my peers and share whatever little I know in case it helps out someone.
 
 
 
-### Markdown
+Feel free to check out my other repos, and drop me mail at yuvraj.singh19@gmail.com in case you want to connect or have any queries.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+See the page at: [https://reg1reg1.github.io](https://reg1reg1.github.io)
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/reg1reg1/reg1reg1.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
