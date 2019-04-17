@@ -13,4 +13,4 @@ title: About
 
 </p>
 
-<img style="margin:0;padding:0" src="{{ site.url }}/public/img/cp4.jpeg" />
+
