@@ -71,12 +71,11 @@ The steps are as follows.
 
 - *Brute-forcing passwords*: Once we have figured out the username, we can go back to solving the original problem and try to bruteforce the credentials for this found user. I used the same *fsocity.dic*. The technique to do this exactly as same as above using Burpsuite, the only difference being a different URL and different login form. We obtain the correct credentials as shown below.
 
-| ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/possible_password.PNG) | 
+- | ![reconrobost.PNG]({{site.url}}/public/img/vulnhub/possible_password.PNG) | 
 |:--:| 
 | *Valid password found!* |
 
-
-- on Logging in, we find that life is really kind. The credentials we found had admin access to the site. 
+- On logging in, we find that life is really kind. The credentials we found had admin access to the site. 
 
 ## Gaining a shell
 Once we have a admin level access on the web, we can do a lot of things- Deface the website, bring it down, wipe the database etc and even pop a shell. This part was simple. We just need to host a php-backdoor webpage. There are several ways to do it, but I just replaced the default template for the __404 page__.
