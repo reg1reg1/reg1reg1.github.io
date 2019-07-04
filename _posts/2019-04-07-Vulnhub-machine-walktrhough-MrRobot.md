@@ -85,6 +85,7 @@ The steps are as follows.
 - *Executing the payload*: The module on running opens a Command shell session as shown below.
 | ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/commandshell.PNG) | 
 |:--:|
+| *Running the exploit and visiting an invalid URL* |
 
 ## Finding the second key
 Once we have the bash shell, we can use find command to find the file. It is important to note here that our shell is *not root*. We can only access limited directories. In the current directory we will find a *md5 file* . On reversing it via dictionary attack, we find that the plaintext phrase as *"abcdefghijklmnopqrstuvwxyz"* which is our *second key* .
@@ -94,5 +95,4 @@ Once we have the bash shell, we can use find command to find the file. It is imp
 
 
 
-| *Running the exploit and visiting an invalid URL* |
 
