@@ -64,13 +64,18 @@ The steps are as follows.
 - * Most of the users will be invalid and will be having a similar response length.
 - * The response length difference by a huge number can indicate a different page response, and this is a quick way to check whether we have received an interesting response as opposed to render the html page every time.
 - * We notice that we have noticed the valid username as *Elliot* in the screenshot below.
+
 | ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/intruder.PNG) | 
 |:--:| 
 | *Valid user found!* |
-- *Brute-forcing passwords*: Once we have figured out the username, we can go back to solving the original problem and try to bruteforce the credentials for this found user. I used the same *fsocity.dic*. The technique to do this exactly as same as above using Burpsuite, the only difference being a different URL and different login form. We obtain the correct credentials as shown below
+
+- *Brute-forcing passwords*: Once we have figured out the username, we can go back to solving the original problem and try to bruteforce the credentials for this found user. I used the same *fsocity.dic*. The technique to do this exactly as same as above using Burpsuite, the only difference being a different URL and different login form. We obtain the correct credentials as shown below.
+
 | ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/possible_password.PNG) | 
 |:--:| 
 | *Valid password found!* |
+
+
 - on Logging in, we find that life is really kind. The credentials we found had admin access to the site. 
 
 ## Gaining a shell
@@ -79,13 +84,17 @@ The steps are as follows.
 
 - *Generating the payload*: Replace the IP address of the php command shell with your own IP and port. This page on loading will connect back to your machine on the specified port and IP.
 - *Preparing Metasploit Handler*: We prepare a metasploit handler, and set a listening port which must be same as the port we filled in on the backdoor webpage. The set options are shown below. The payload available for this kind of handler is only "sh", so no meterpreter. Since it is a standalone handler, we will be using the auxiliary handler module of metasploit.
+
 | ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/reverseshell.PNG) | 
 |:--:| 
 | *Auxiliary handler options* |
+
 - *Executing the payload*: The module on running opens a Command shell session as shown below.
+
 | ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/commandshell.PNG) | 
 |:--:|
 | *Running the exploit and visiting an invalid URL* |
+
 
 ## Finding the second key
 Once we have the bash shell, we can use find command to find the file. It is important to note here that our shell is *not root*. We can only access limited directories. In the current directory we will find a *md5 file* . On reversing it via dictionary attack, we find that the plaintext phrase as *"abcdefghijklmnopqrstuvwxyz"* which is our *second key* .
