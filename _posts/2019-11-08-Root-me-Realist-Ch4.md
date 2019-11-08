@@ -61,7 +61,7 @@ Once we do this, we find that we get a permissions error! Finally we have got ou
 
 ## Getting the inclusion to work
 
-Since we face permission issue while trying to extract *'/etc/passwd'*, the web server might be running in non-root mode. We try then to include a file which the web server should have permissions on. The payload is now *'/var/log/apache*'*. We get  a file exists but the error being displayed is that the path we are trying to access is not within the allowed domains and configurations. The two options which came to my mind at this point was to do two things:
+Since we face permission issue while trying to extract *'/etc/passwd'*, the web server might be running in non-root mode. We try then to include a file which the web server should have permissions on. The payload is now *'/var/log/apache*'. We get  a file exists but the error being displayed is that the path we are trying to access is not within the allowed domains and configurations. The two options which came to my mind at this point was to do two things:
 
 1. Get a RCE on the web server to change the permissions
 2. Try to read the source code by getting the php  code in the current directory
