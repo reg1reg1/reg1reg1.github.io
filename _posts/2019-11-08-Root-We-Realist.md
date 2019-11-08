@@ -1,6 +1,6 @@
 ---
 layout: post
-title: MrRobot Vulnhub writeup 2
+title: Rootwe realist writeup 2
 tags: web pentesting
 categories: Ctf-Writeups 
 excerpt: This post entails about the walkthrough of getting root on a VM MrRobot which is present on VulnHub. This machine is at a beginner level, and one of the first machines that I broke on VulnHub. You are strongly recommended to try everything on your own before proceeding.
