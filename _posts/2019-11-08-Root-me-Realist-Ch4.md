@@ -4,8 +4,9 @@ title: Rootme Realist ch4 writeup
 tags: web pentesting
 categories: Ctf-Writeups 
 excerpt: Recently discovered this website called rootme.org (Link:) which has a lot of machines we can try for Pentesting newbies such as myself. I suggest everyone to check out the website once for learning purpose.
-It features a standalone web application unlike VulnHub style of providing VM's to download and pentest. The realist section of this website features challenges which have a certain level of real vulnerabilities hidden behind a functional appearing application. The machine description also features resources from which one can make out that the challenge involves exploiting LFI (Local File Inclusion) in the website.
+It features a standalone web application unlike VulnHub style of providing VM's to download and pentest. 
 ---
+
 # Root-We writeup
 
 
