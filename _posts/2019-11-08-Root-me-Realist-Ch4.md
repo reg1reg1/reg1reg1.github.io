@@ -1,10 +1,9 @@
 ---
 layout: post
-title: RootWe Realist writeup
+title: MrRobot Vulnhub writeup 2
 tags: web pentesting
 categories: Ctf-Writeups 
-excerpt: Recently discovered this website called rootme.org (Link:) which has a lot of machines we can try for Pentesting newbies such as myself. I suggest everyone to check out the website once for learning purpose.
-It features a standalone web application unlike VulnHub style of providing VM's to download and pentest. 
+excerpt: This post entails about the walkthrough of getting root on a VM MrRobot which is present on VulnHub. This machine is at a beginner level, and one of the first machines that I broke on VulnHub. You are strongly recommended to try everything on your own before proceeding.
 ---
 
 ## Root-We writeup
