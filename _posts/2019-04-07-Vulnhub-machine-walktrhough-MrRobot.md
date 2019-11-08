@@ -40,6 +40,7 @@ The following is the output of the robots.txt.
 | ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/robotstxt.PNG) | 
 |:--:| 
 | *robots.txt has the first key* |
+
 We have found the first key which is inside *key-1-of-3.txt* file. 
 
 We download the fsocity.dic file as well. The extension seems to suggest it is a dictionary file of some sort.
