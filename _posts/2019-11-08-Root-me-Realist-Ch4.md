@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Rootme Realist ch4 writeup
+title: RootWe Realist writeup
 tags: web pentesting
 categories: Ctf-Writeups 
 excerpt: Recently discovered this website called rootme.org (Link:) which has a lot of machines we can try for Pentesting newbies such as myself. I suggest everyone to check out the website once for learning purpose.
