@@ -1,5 +1,6 @@
 2019-02-13-Bandit-Wargames.md
 ---
+layout: article
 title: Bandit Overthewire solution writeups
 tags: linux ctf
 excerpt: These are the easiest problems of the wargame prepping us for the reverse engineering and tougher challenges that lie ahead. We have a series of 34 machines to ssh into, and each machine holds the password to the next machine. It is highly recommended to solve the challenges on your own before proceeding to look for the solution. The solutions provided are for educational purposes only.
