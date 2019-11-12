@@ -48,3 +48,14 @@ header:
       fr-LU   : *FR
       # @end locale config
     url: /about.html
+
+  - titles:
+      # @start locale config
+      en      : &EN       Projects
+      # @end locale config
+    url: /project.html
+
+  - titles:
+      en      : &EN       Github
+      # @end locale config
+    url: https://github.com/reg1reg1

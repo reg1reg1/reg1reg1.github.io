@@ -1,5 +1,6 @@
 ---
 title: Secret and Lies, Book Review
+key: 201911070
 tags: review
 excerpt: This was one of the first books I read when I started out to learn more about information security few months back, and hands down it played a great role in piquing my interest in information security.  I had read Bruce's earlier work , and read his blogs which is updated regularly on issues around information security. 
 ---
