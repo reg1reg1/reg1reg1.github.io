@@ -37,7 +37,7 @@ timezone: # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for
 ##############################
 author:
   type      : # "person" (default), "organization"
-  name      : Yuvraj Sinhg
+  name      : Yuvraj Singh
   url       :
   avatar    : # path or url of avatar image (square)
   bio       : Cybersecurity and computer geek, MS in Cybersecurity NYU Tandon School of Engineering
@@ -120,7 +120,7 @@ sharing:
 ## => Comments
 ##############################
 comments:
-  provider: false # false (default), "disqus", "gitalk", "valine", "custom"
+  provider: disqus # false (default), "disqus", "gitalk", "valine", "custom"
 
   ## Disqus
   disqus:
@@ -175,7 +175,7 @@ analytics:
 
   ## Google Analytics
   google:
-    tracking_id : # Google Analytics id for the site
+    tracking_id : UA-151890414-1 # Google Analytics id for the site
     anonymize_ip: false # Anonymize IP tracking for Analytics
 
 
