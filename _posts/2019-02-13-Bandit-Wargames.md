@@ -278,8 +278,7 @@ git show-ref
 Then we get to know the commits and references across branches. Again using git show as described above we can get the required commit under "dev" branch which is short for development, revealing to us the password.
 
 
-## 
-Bandit30
+## Bandit30
 
 This involves a tag with a broken commit, which prevents checkout or cloning. This tag can be viewed by using our friend the git-show command as well as before.
 
