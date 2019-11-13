@@ -2,7 +2,7 @@
 title: Rootwe realist writeup
 key: 201911080
 tags: web pentesting
-excerpt: This post entails about the walkthrough of getting root on a VM MrRobot which is present on VulnHub. This machine is at a beginner level, and one of the first machines that I broke on VulnHub. You are strongly recommended to try everything on your own before proceeding.
+
 ---
 
 ## Root-We writeup
@@ -98,3 +98,7 @@ On getting **config.php** , we notice that the web site uses the file-based sqli
 
 
 
+<!--more-->
+
+---
+This post entails about the walkthrough of getting root on a VM MrRobot which is present on VulnHub. This machine is at a beginner level, and one of the first machines that I broke on VulnHub. You are strongly recommended to try everything on your own before proceeding.
