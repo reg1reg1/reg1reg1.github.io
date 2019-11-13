@@ -1,4 +1,5 @@
 ---
+layout: article
 title: Rootwe realist writeup
 key: 201911080
 tags: web pentesting

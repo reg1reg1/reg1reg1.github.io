@@ -1,4 +1,5 @@
 ---
+layout: article
 title: Secret and Lies, Book Review
 key: 201911070
 tags: review

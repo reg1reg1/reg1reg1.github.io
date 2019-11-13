@@ -1,4 +1,5 @@
 ---
+layout: article
 title: MrRobot Vulnhub writeup
 key: 201904070
 tags: web pentesting
