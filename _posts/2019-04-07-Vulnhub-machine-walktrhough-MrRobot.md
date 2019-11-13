@@ -3,7 +3,7 @@ layout: article
 title: MrRobot Vulnhub writeup
 key: 201904070
 tags: web pentesting
-
+excerpt: This post entails about the walkthrough of getting root on a VM MrRobot which is present on VulnHub. This machine is at a beginner level, and one of the first machines that I broke on VulnHub. You are strongly recommended to try everything on your own before proceeding.
 ---
 
 
@@ -138,8 +138,4 @@ Now we call *sh* from within the interactive mode of nmap and Bazingo!
 
 We can then find the third keyfile which is present in the path */root* and get the key.
 
-<!--more-->
 
----
-
-This post entails about the walkthrough of getting root on a VM MrRobot which is present on VulnHub. This machine is at a beginner level, and one of the first machines that I broke on VulnHub. You are strongly recommended to try everything on your own before proceeding.

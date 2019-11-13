@@ -4,7 +4,7 @@ key: 201902130
 pageview: true
 title: Bandit Overthewire solution writeups
 tags: linux ctf
-
+excerpt: These are the easiest problems of the wargame prepping us for the reverse engineering and tougher challenges that lie ahead. We have a series of 34 machines to ssh into, and each machine holds the password to the next machine. It is highly recommended to solve the challenges on your own before proceeding to look for the solution. The solutions provided are for educational purposes only.
 ---
 # Bandit
 These are the easiest problems of the wargame prepping us for the reverse engineering and tougher challenges that lie ahead. We have a series of 34 machines to ssh into, and each machine holds the password to the next machine. It is highly recommended to solve the challenges on your own before proceeding to look for the solution. The solutions provided are for educational purposes only.
@@ -291,7 +291,3 @@ This is a simple add, commit and push. Add the file, commit it then push it. The
 This final challenge is a bit tricky, and there are multiple approaches to solving this which may be far more creative than what I did. Basically we are in a custom shell, which converts everything that we type to upper-case rendering every command useless. We can't do "ls" or "cd". Intuitively, this script or shell must have been called by some parent process or script. Using $0 will call the parent script from within. Since "0" and 
 "$" are not alphabets, the shell will let us drop back in to the parent "sh" shell.
 
-<!--more-->
-
----
-These are the easiest problems of the wargame prepping us for the reverse engineering and tougher challenges that lie ahead. We have a series of 34 machines to ssh into, and each machine holds the password to the next machine. It is highly recommended to solve the challenges on your own before proceeding to look for the solution. The solutions provided are for educational purposes only.

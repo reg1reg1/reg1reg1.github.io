@@ -3,7 +3,7 @@ layout: article
 title: Secret and Lies, Book Review
 key: 201911070
 tags: review
-
+excerpt: This was one of the first books I read when I started out to learn more about information security few months back, and hands down it played a great role in piquing my interest in information security.  I had read Bruce's earlier work , and read his blogs which is updated regularly on issues around information security. 
 ---
 ## Book Review: Secrets and Lies - *Digital Security in a Networked World*
 
@@ -34,7 +34,4 @@ This book is meant to be read much like a novel, and it goes a long way in contr
 I have read this book over and over again, and there are parts of this book that I read to remind why working in cybersecurity is as exciting as it is challenging!  
 ### Verdict: 5.0/5.0
 
-<!--more-->
 
----
-This was one of the first books I read when I started out to learn more about information security few months back, and hands down it played a great role in piquing my interest in information security.  I had read Bruce's earlier work , and read his blogs which is updated regularly on issues around information security. 
