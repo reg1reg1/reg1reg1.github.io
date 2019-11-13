@@ -65,7 +65,7 @@ repository_tree: master
 ##############################
 paths:
   root    : # title link url, "/" (default)
-  home    : /home/
+  home    : /home.html
   archive : # "/archive.html" (default)
   rss     : # "/feed.xml" (default)
 
