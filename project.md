@@ -2,7 +2,7 @@
 layout: article
 titles:
   # @start locale config
-  en      : &EN       Projects
+  en      : &EN       Projects & Accomplishments
   en-GB   : *EN
   en-US   : *EN
   en-CA   : *EN
@@ -26,9 +26,25 @@ titles:
 
 ---
 
-My Projects
+Elaborating below, some of the major areas that I have been working on in the last couple of years. I have also included any CTF's styled events that I have taken part in the last couple of years. I am still a year into infosec, and if you are someone who wants to work on something similar or different in technology/ infosec, shoot me an email or contact me at [LinkedIn][https://www.linkedin.com/in/yuvraj-singh-b29228a0/] or [Github][https://github.com/reg1reg1/]
 
-## CyberMetrics
+# CyberMetrics
+
+Quantifying cyber risk is one of the biggest challenges in info sec today. Since the advent of the Orange book, people have been trying to quantify security or measure it in some form. Does the phrase "less" or "more secure" have any inference ? Though security may never be directly measured, can there be some metrics for it. There are various frameworks, and organizations such as PCI-DSS, NIST standards, BSIMM which focuses on software security.
+
+This endeavour of cyber metrics done by the research team at NYU asks the question whether a reliable metrics of cyber metrics can be formed by asking the gut feeling of cybersecurity experts.
+
+NYU's cyber metrics index of expert opinion or "gut feeling" on status of cyber security has been collecting opinion data over the last 8 years. This is an attempt to parse through and analyze the data with the ELK stack and conclude whether any corelations can be drawn between "gut feeling of experts" and "the actual state of cyber security".
+
+## Overview
+
+A part of a team of 6 students in the Fall semester, working to find relation between various aspects of the data collected by survey started 8 years back by Dan Geer and Mukul Pareek. 
+
+I worked on setting up the pipeline for pulling in the data, setting up a planned infrastructure for easier ingesting of data, and corelating the existing with various publicly available data related to cybersecurity breach, released CVE's to find patterns if any and aid in research work towards the technical paper on NYU's Cyber Index.
+
+**[Gthub Link to Project][https://github.com/reg1reg1/Metrics]**
+
+![arch](assets/arch.png)
 
 ## Implementing Network Security Monitoring
 
