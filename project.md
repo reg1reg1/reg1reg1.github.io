@@ -78,3 +78,14 @@ The whitepaper on the same can be found here:> <a href="https://github.com/reg1r
 
 ## Penetration Testing and Vulnerability Analysis: Paper Reviews
 
+1. **Spectre and Meltdown**:  A scenario based MLA styled report which is written as a demonstrated communication between a security team of a company to the other teams and upper management explaining them the vulnerability Spectre and Meltdown and the impact to the organization, and measures that need to be taken. 
+   View the full <a href="https://drive.google.com/file/d/1zhwDTxJjfm6K1X78l9bKbRbGD7m_ayUB/view?usp=sharing"> pdf report </a>. 
+2. **MS08-067 Case study**: A scenario based MLA styled report written as a demonstrated communication between the security team of the company to other teams such as developer and upper management explaining the vulnerability to them and the impact towards the organization and measures that need to be taken.
+   View the full <a href="https://drive.google.com/file/d/1y8UfV9bYe2MUOkUEL27D1ChWjHR2FFJa/view?usp=sharing"> pdf report </a>.
+3. **Vehicle Hacking: Case study**: An MLA styled report explaining the vehicle hacking which was presented by Dr Charlie Miller and Chris Valasek on how a vehicle may be remotely hacked into. The security team explains the impact to the other teams of the hypothetical organization.
+   View the full <a href="https://drive.google.com/file/d/1VtdAfIALLL11Yho7K0JnlljFBKdl8mpn/view?usp=sharing">pdf report</a>.
+
+## Cyber Range Lab: Penetration Testing and Vulnerability analysis.
+
+The final project of the course was to simulate a penetration testing scenario on company from breaking physical security to breaking into machines, and documenting the penetration testing work in a OSCP styled professional Pentesting report. It was a good window to the world of real world pentesting and a befitting final project to end the course. The full report can be <a href="https://drive.google.com/file/d/1jofO3kuWtXPCmnZE2KEUFiIgFA9NJvxd/view?usp=sharing">viewed here </a>:
+
