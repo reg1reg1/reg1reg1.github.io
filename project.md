@@ -26,7 +26,7 @@ titles:
 
 ---
 
-# My Projects
+My Projects
 
 ## CyberMetrics
 
