@@ -2,7 +2,7 @@
 layout: article
 titles:
   # @start locale config
-  en      : &EN       Projects & Accomplishments
+  en      : &EN       Academic Work, Projects & Accomplishments
   en-GB   : *EN
   en-US   : *EN
   en-CA   : *EN
