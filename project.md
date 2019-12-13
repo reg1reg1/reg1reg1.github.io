@@ -29,7 +29,9 @@ titles:
 
 Elaborating below, some of the major areas that I have been working on in the last couple of years. I have also included any CTF's styled events that I have taken part in the last couple of years. I am still a year into infosec, and if you are someone who wants to work on something similar or different in technology/ infosec, shoot me an email or contact me at  **<a href="https://www.linkedin.com/in/yuvraj-singh-b29228a0/">LinkedIn</a>** or **<a href="https://github.com/reg1reg1">Github</a>** .
 
-# CyberMetrics
+# 1. CyberMetrics
+
+## *August 2019 - December 2019* under <a href="https://cybersecurity-strategy-masters.nyu.edu/faculty/edward-amoroso/">Professor Edward Amoroso </a>
 
 Quantifying cyber risk is one of the biggest challenges in info sec today. Since the advent of the Orange book, people have been trying to quantify security or measure it in some form. Does the phrase "less" or "more secure" have any inference ? Though security may never be directly measured, can there be some metrics for it. There are various frameworks, and organizations such as PCI-DSS, NIST standards, BSIMM which focuses on software security.
 
@@ -47,7 +49,9 @@ I worked on setting up the pipeline for pulling in the data, setting up a planne
 
 ![arch](assets/arch.png)
 
-# Implementing Network Security Monitoring
+# 2. Implementing Network Security Monitoring
+
+## *July 2019 - December 2019 under <a href="https://engineering.nyu.edu/faculty/thomas-reddington">Professor Thomas Reddington </a>*
 
 Network security is a complex process involving a lot of different micro components that need to be fine tuned to orchestrate a smooth, fast , adaptive and scalable implementation. For an organization to have a hardened NSM model, it must go through thorough and rigourous designs, redesigns and reviews before arriving at an optimal implementation. The dynamic nature of the threat that a network faces adds to the challenge of the task at hand, and an organization must either outsource or have a dedicated team of professionals in this area who are continously trained to maintain the NSM and modify it when the need be. The Application Collection Framework and Collective Intelligence frameworks are some which provide good reference points in setting up NSM for a given network. From deciding sensor hardware and placement, to deciding algorithms that detect threats faster, to building a scalable architecture that can adapt to changes well- A network security analyst is expected to know a vast array of skills proficiently.
 
@@ -67,6 +71,10 @@ Technologies Used:
 12. Ansible for managing multiple nodes in the network
 13. Python for automation.
 
-The full project can be found here:> 
-The whitepaper on the same can be found here:> 
+The full project can be found here: <a href="">Github Link </a>. I am still continuing work in this area, if you have similar interests would be happy to collaborate.
+The whitepaper on the same can be found here:> <a href="https://github.com/reg1reg1/NSM-Implementation/blob/master/Project%20Whitepaper.pdf">Pdf link</a>
+
+# 3. Academic Coursework: 
+
+## Penetration Testing and Vulnerability Analysis: Paper Reviews
 
