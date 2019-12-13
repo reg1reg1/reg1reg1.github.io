@@ -26,7 +26,7 @@ titles:
 
 ---
 
-Elaborating below, some of the major areas that I have been working on in the last couple of years. I have also included any CTF's styled events that I have taken part in the last couple of years. I am still a year into infosec, and if you are someone who wants to work on something similar or different in technology/ infosec, shoot me an email or contact me at [LinkedIn][https://www.linkedin.com/in/yuvraj-singh-b29228a0/] or [Github][https://github.com/reg1reg1/]
+Elaborating below, some of the major areas that I have been working on in the last couple of years. I have also included any CTF's styled events that I have taken part in the last couple of years. I am still a year into infosec, and if you are someone who wants to work on something similar or different in technology/ infosec, shoot me an email or contact me at  **<a href="https://www.linkedin.com/in/yuvraj-singh-b29228a0/">LinkedIn</a>** or **<a href="https://github.com/reg1reg1">Github</a>** .
 
 # CyberMetrics
 
@@ -42,9 +42,27 @@ A part of a team of 6 students in the Fall semester, working to find relation be
 
 I worked on setting up the pipeline for pulling in the data, setting up a planned infrastructure for easier ingesting of data, and corelating the existing with various publicly available data related to cybersecurity breach, released CVE's to find patterns if any and aid in research work towards the technical paper on NYU's Cyber Index.
 
-**[Gthub Link to Project][https://github.com/reg1reg1/Metrics]**
+**<a href="https://github.com/reg1reg1/Metrics">Github Link to Project</a>**
 
 ![arch](assets/arch.png)
 
 ## Implementing Network Security Monitoring
+
+Network security is a complex process involving a lot of different micro components that need to be fine tuned to orchestrate a smooth, fast , adaptive and scalable implementation. For an organization to have a hardened NSM model, it must go through thorough and rigourous designs, redesigns and reviews before arriving at an optimal implementation. The dynamic nature of the threat that a network faces adds to the challenge of the task at hand, and an organization must either outsource or have a dedicated team of professionals in this area who are continously trained to maintain the NSM and modify it when the need be. The Application Collection Framework and Collective Intelligence frameworks are some which provide good reference points in setting up NSM for a given network. From deciding sensor hardware and placement, to deciding algorithms that detect threats faster, to building a scalable architecture that can adapt to changes well- A network security analyst is expected to know a vast array of skills proficiently.
+
+Technologies Used:
+
+1. Justniffer, Zeek for PTSR data extraction
+2. YAF, SiLK (Cert NetSA tools) for flow collection and generation
+3. GNS3 For Network Simulation
+4. Security Onion as a reference Sensor
+5. Bash scripts for various tasks such as monitoring, logging, and miscellaneous other automations
+6. Filebeat for shipping logs
+7. FRR as router software
+8. Application Collection Framework /Collection Intelligence Framework as guidance
+9. Logstash for centrally collecting and transferring logs
+10. Elasticsearch for distributed storage of logs.
+11. Kibana for visual analysis of logs.
+12. Ansible for managing multiple nodes in the network
+13. Python for automation.
 
