@@ -4,9 +4,9 @@ key: 20200221
 pageview: true
 title: Starting in Incident Response and Network Security
 tags: blog
-excerpt: A resource guide to those starting out in Incident Response / Network Forensics
+excerpt: A resource guide to those starting out in Incident Response  and Network Forensics
 ---
-## 
+
 
 ## Overview
 
@@ -51,14 +51,15 @@ You will find yourself configuring interfaces, and configurations a lot, and it 
 
 For learning network security the best place to start would be with these courses
 
-1. [Udemy Cybersecurity Course]: https://www.udemy.com/course/the-complete-internet-security-privacy-course-volume-1/?ranMID=39197&amp;ranEAID=a1LgFw09t88&amp;ranSiteID=a1LgFw09t88-6KWe8ftbW6YRw0BzM_2K1Q&amp;LSNPUBID=a1LgFw09t88	"The network security part of this course can walk you through the basics"
 
+
+2. Udemy's course on Network security (Part of a course) is good: https://www.udemy.com/course/network-security-course/?ranMID=39197&ranEAID=a1LgFw09t88&ranSiteID=a1LgFw09t88-7pkZrnOC4Geg0_gshtAi9A&LSNPUBID=a1LgFw09t88
 2. Vivek Ramachandran's course on network security would also help out a great deal. The other courses offered by him are pure gold too.
 
 ### Analytics/Data Analysis Stack:
 
 Incident response involves a lot of parsing through data and identifying the patterns that are eventful, and thus involves a lot of data cleaning and analysis. During my implementation into incident response, I realized how important data analysis is to the process.
-One should learn a basic data anaysis tool stack , but my personal favourite is the **ELK Stack (Elasticsearch/Kibana ** as they offer a 1-stop easy to learn and scale solution. The other favourites are **Splunk**.
+One should learn a basic data anaysis tool stack , but my personal favourite is the **ELK Stack (Elasticsearch/Kibana** as they offer a 1-stop easy to learn and scale solution. The other favourites are **Splunk**.
 
 ### IDS tool
 
@@ -66,7 +67,7 @@ Configuring and using an IDS tool will be a crux to Incident Response and the SI
 
 ### Automation tool
 
-With large number of machines, and systems to manage, you would require knowledge of automating actions over machines, patch management and deploying solutions/softwares to a lot of remote machines at once. Tools like **Ansible**, and **Puppet ** will come handy in this stage of the process.
+With large number of machines, and systems to manage, you would require knowledge of automating actions over machines, patch management and deploying solutions/softwares to a lot of remote machines at once. Tools like **Ansible**, and **Puppet** will come handy in this stage of the process.
 
 ### Generic Handbook/Study Guide
 
@@ -74,15 +75,14 @@ With large number of machines, and systems to manage, you would require knowledg
 
 There are books which serve as great reference guide for the process, and as a handbook. My personal favorites are -
 
-1. [Applied  Network Security Monitoring]: https://www.amazon.com/Applied-Network-Security-Monitoring-Collection/dp/0124172083
-
-2. [Network Security Assessment]: https://www.amazon.com/Network-Security-Assessment-Know-Your/dp/149191095X/
+1. **Applied Network Security Monitoring**: https://www.amazon.com/Applied-Network-Security-Monitoring-Collection/dp/0124172083 
+2. **Network Security Assessment:** https://www.amazon.com/Network-Security-Assessment-Know-Your/dp/149191095X/
 
 
 
 I personally worked on this as an Advanced Project in my third semester of graduate studies.
 
-[Github Link to repo]: https://github.com/reg1reg1/NSM-Implementation
+Github Repo for the work done:> https://github.com/reg1reg1/NSM-Implementation 
 
   
 
