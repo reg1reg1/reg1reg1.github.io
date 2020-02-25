@@ -2,7 +2,7 @@
 layout: article
 title: MrRobot Vulnhub writeup
 key: 201904070
-tags: web pentesting
+tags: ctf
 excerpt: This post entails about the walkthrough of getting root on a VM MrRobot which is present on VulnHub. This machine is at a beginner level, and one of the first machines that I broke on VulnHub. You are strongly recommended to try everything on your own before proceeding.
 ---
 
@@ -23,8 +23,8 @@ Startup the VM and make sure you are able to reach the MrRobot VM by pinging it 
 
 The following image shows the results.
 
-| ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/reconrobot.PNG) | 
-|:--:| 
+| ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/reconrobot.PNG) |
+|:--:|
 | *Some interesting ports are open* |
 
 Since port 80 is open, we can visit the Webpage being served if any from the MrRobot VM. On opening the URL on browser, we can see a video most probably related to Mr Robot playing, and a video and interactive web simulation of a fancy command shell pops up. By doing this we have made the web attack vector our first choice.
@@ -37,8 +37,8 @@ Using a tool like Dirbuster (a noisy tool ) we can begin mapping the URL's by tr
 I also by default always visit the *robots.txt* of any website to see if there are suspicious URL's.
 The following is the output of the robots.txt.
 
-| ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/robotstxt.PNG) | 
-|:--:| 
+| ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/robotstxt.PNG) |
+|:--:|
 | *robots.txt has the first key* |
 
 We have found the first key which is inside *key-1-of-3.txt* file. 
@@ -47,8 +47,8 @@ We download the fsocity.dic file as well. The extension seems to suggest it is a
 
 The Dirbuster reveals that Wordpress and PHP are at play here.
 
-| ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/reconwplogin.PNG) | 
-|:--:| 
+| ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/reconwplogin.PNG) |
+|:--:|
 | *Interesting URL's revealed by Dirbuster* |
 
 On visiting,the URL *wp-login*, we are presented with a login form. Let us attack this login mechanism and see if we can get access to the Wordpress management interface.
@@ -58,8 +58,8 @@ On visiting,the URL *wp-login*, we are presented with a login form. Let us attac
 Initially , I tried with the user *admin* and some of the words in *Fsocity.dic*. Nothing worked out and I did not get any password matches. This made me wonder whether I was going in the right direction. Once I had given it some thought, I thought maybe the user admin did not exist. This is where I thought about looking for a way to enumerate users. A good place to start this was trying to use the *forgot password functionality* . Here when we enter a random user which will not exist database , we can see the following output.
 The Dirbuster reveals that Wordpress and PHP are at play here.
 
-| ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/invuser.PNG) | 
-|:--:| 
+| ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/invuser.PNG) |
+|:--:|
 | *Intvalid user admin* |
 
 Since the application lets us know about the validity of user, it makes the complexity of looking for credentials much easier. Instead of a multiplicative search, we need to do a additive search - We first need to find a valid user, and then only look for that valid user's password.
@@ -70,14 +70,14 @@ The steps are as follows.
 - * The response length difference by a huge number can indicate a different page response, and this is a quick way to check whether we have received an interesting response as opposed to render the html page every time.
 - * We notice that we have noticed the valid username as *Elliot* in the screenshot below.
 
-| ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/intruder.PNG) | 
-|:--:| 
+| ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/intruder.PNG) |
+|:--:|
 | *Valid user found!* |
 
 - __Brute-forcing passwords__: Once we have figured out the username, we can go back to solving the original problem and try to bruteforce the credentials for this found user. I used the same *fsocity.dic*. The technique to do this exactly as same as above using Burpsuite, the only difference being a different URL and different login form. We obtain the correct credentials as shown below.
 
-- | ![reconrobost.PNG]({{site.url}}/public/img/vulnhub/possible_password.PNG) | 
-|:--:| 
+- | ![reconrobost.PNG]({{site.url}}/public/img/vulnhub/possible_password.PNG) |
+|:--:|
 | *Valid password found!* |
 
 - On logging in, we find that life is really kind. The credentials we found had admin access to the site. 
@@ -89,13 +89,13 @@ The steps are as follows.
 - __Generating the payload__: Replace the IP address of the php command shell with your own IP and port. This page on loading will connect back to your machine on the specified port and IP.
 - __Preparing Metasploit Handler__: We prepare a metasploit handler, and set a listening port which must be same as the port we filled in on the backdoor webpage. The set options are shown below. The payload available for this kind of handler is only "sh", so no meterpreter. Since it is a standalone handler, we will be using the auxiliary handler module of metasploit.
 
-| ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/reverseshell.PNG) | 
-|:--:| 
+| ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/reverseshell.PNG) |
+|:--:|
 | *Auxiliary handler options* |
 
 - __Executing the payload__: The module on running opens a Command shell session as shown below.
 
-| ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/commandshell.PNG) | 
+| ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/commandshell.PNG) |
 |:--:|
 | *Running the exploit and visiting an invalid URL* |
 
@@ -119,20 +119,20 @@ So here our aim is to basicaly get a process which has the __uid__ bit set for _
 
 The query for finding programs under this category is this.
 
-| ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/getuidroot.PNG) | 
+| ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/getuidroot.PNG) |
 |:--:|
 | *Getuid* |
 
 
 We are basically finding and filtering for files which have the uid bit value as "4000"  which corresponds to those processes with the uid set to root value. All the processes are pretty usual, and we cannot execute shell commands from *ping* or *umount*xcept __nmap__. Nmap has an interactive mode option. Let us execute nmap in interactive mode and give it a shot.
 
-| ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/nmap.PNG) | 
+| ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/nmap.PNG) |
 |:--:|
 | *nmap in interactive mode* |
 
 Now we call *sh* from within the interactive mode of nmap and Bazingo!
 
-| ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/privesc.PNG) | 
+| ![reconrobot.PNG]({{site.url}}/public/img/vulnhub/privesc.PNG) |
 |:--:|
 | *executing shell gives root* |
 
