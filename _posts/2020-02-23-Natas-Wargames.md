@@ -142,7 +142,7 @@ echo xor_encrypt(json_encode($defaultdata)); // this will print the key as qw8Jq
 
 Now , we will get the key after the above, we can create our cookie and set it using the aforementioned tools. Cookie generating helper code has been shown below.
 
-```PHP
+```php
 //Fetching the cookie is easy we want the cookie for this modified default data
 //We have y , now for a desired input x' as shown below we calculate z' as y+x'=z'
 $defaultdata = array( "showpassword"=>"yes", "bgcolor"=>"#ffffff");
@@ -163,6 +163,8 @@ echo "\n\n\n\n";
 //Solved
 echo get_cookie(json_encode($defaultdata));
 ```
+
+
 
 This was my favorite challenge so far.
 
