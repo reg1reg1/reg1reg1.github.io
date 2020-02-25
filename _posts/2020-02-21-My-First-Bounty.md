@@ -11,7 +11,7 @@ excerpt: A simple broken spectacle led me down the rabbit hole of my first publi
 
 On a sunday morning, I discovered that I had slept on my spectacles and broken them. In India , I always buy my spectacles from Lenskart, and was quite happy to discover that they deliver here in the US as well.
 
-While on the process of purchasing spectacles at Lenskart.com in their US site which is https://lenskart.us/ , I became curious at the URL being displayed for my order id.  To any person starting out in infosec, a .php extension in the URL always stands out in the open.
+While on the process of purchasing spectacles at Lenskart.com in their US site which is https://lenskart.us/ , I became curious at the URL being displayed for my order id.  To any person starting out in infosec, a .php extension in the URL always stands out glaringly, like a beetle among roaches.
 
 One thing led to another, and before long, I was using whatever was left of my spectacle-bereft-eyes to see how deep the rabbit hole went. Since I did not have prior permission, or consent from them I was cautious about not being too intrusive with my approach. I also had never disclosed a bug before and have little idea how bug bounties and disclosures work. 
 
