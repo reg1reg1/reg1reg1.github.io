@@ -35,7 +35,7 @@ When I completed the transaction for my order at lenskart, I noticed that the or
 So it looked like this
 
 ```
-https://app.lenskart.sg/......?orderId={prefix}{num}
+https://{Vulnerable URL}/......?urlparamter={prefix}{num}
 ```
 
 I wanted to see whether I could change the num and be allowed to see a different order, and I could. Not only that I could also edit the order! If that was not enough, the order could be changed after it had been placed. Lenskart automates the spectacle process, and makes their own glasses based on prescriptions uploaded by the users or powers manually entered. I could change someone's order and have them fight lenskart for messing up their eyepowers.
@@ -52,11 +52,11 @@ They only ended up removing the URL from being exposed on the client side, and h
 
 ## Status
 
-The lenskart team has not replied back, and I am waiting on status from hackerone(Lenskart is external).
+The lenskart team has not replied back, and I am waiting on status from hackerone(Lenskart is external). 
 
 ### URL
 
-https://**app.lenskart.sg**/myprescription-inter.php?orderno=orderINTR1959
+I have removed the URL till lenskart fixes the bug.
 
 ## Screenshots
 
