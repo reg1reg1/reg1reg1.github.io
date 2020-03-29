@@ -100,9 +100,41 @@ Idea to get the solution here is very similar to the earlier level. Instead of s
 
 ### Natas 20
 
-To solve this challenge, we must  once again read and analyze the underlying PHP source code. We are logged in as regular user, and we must login as admin. 
+To solve this challenge, we must  once again read and analyze the underlying PHP source code. We are logged in as regular user, and we must login as admin.  On reading the source code, we get to know that session is being read from a file. 
 
+To understand better, here is the list of functions in the source code with their functions.Let’s look at each function and see what it does:
 
+- **debug**($msg) Turns on debug if debug is a parameter in the GET request to the page.
+- **print_credentials**() will print natas21 username and password if the following conditionals are satisfied: This is what we need to accomplish at the end of our excercise.
+  - $_SESSION is true if there is an existing session. The array $_SESSION is not empty.
+  - array_key_exists(“admin”, $_SESSION) is true if “admin” key is set in $_SESSION.
+  - $_SESSION[“admin”] == 1 is true if the value associated with the key “admin” in $_SESSION is set to 1
+- **myopen($path, $name)** always return true provided the path of the file exists.
+- **myclose()** always returns true.
+- **myread($sid)** has several parts
+  - The first if(strspn….) statement check if the $sid contains characters that is within the long string of characters. If it is not, return “Invalid SID”. Otherwise, continue.
+  - Then, it check to see if the path exist for the file call /mysess_$sid. For example, if $sid is abcdefg, it is checking for the file mysess_abcdefg. If the file exist, continue.
+  - Here, we see that the content of the file is save in $data and the foreach loop take each new line of $data and put it in $line. Then, it takes each space separated word in each $line and put them in an array call $parts. If the first part ($parts[0]) is not an empty string, then it will use the first part as the session key and the second part ($parts[1]) as the value corresponding to that key.
+- mywrite($sid, $data) also has several parts
+  - The first if(strspn …) does the same check for valid $sid in myread()
+  - The same $filename is created using the $sid.
+  - The key is sorted in $_SESSION and the foreach loop take the pair of $key and corresponding $value and add it as a new line in $data. The $data is then write to the $filename. Note that new line is used to explode the key value pair and then written to the file. This is the entry point for our approach, **response splitting** attack. The 
+- mydestroy($sid) always return true.
+- mygarbage($t) always return true.
+- main interface does the following:
+  - session_start().
+  - check name is in the $_REQUEST, if so, set the $_SESSION[“name”] to $_REQUEST[“name”]. If we input “test” as a name, it will correspond “test” as the
+  - print_credentials()
+  - set $name to empty string and check if “name” is in the $_SESSION, if so, set the variable $name to $_SESSION[“name”]
+
+The key value pair is being read from the file in the $filename. The key vakye oair is being read, and the value of the "admin" must be 1. 
+The question is "**Can we insert the line admin=1 by the inputs given to us?**" The trick here is to insert an extra line, and we can do so by splitting up our response. The input would be
+
+```bash
+user1%0Aadmin 1
+```
+
+This input would be split into 2 usernames when processed by the mywrite function and write the new line "admin 1" after user1. %0a injected here is the newline character. This injection can be done in the url itself. Once the injection is done, we can change the username to admin with ease and get the credentials.
 
 
 
