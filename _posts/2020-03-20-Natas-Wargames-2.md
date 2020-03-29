@@ -140,3 +140,26 @@ This input would be split into 2 usernames when processed by the mywrite functio
 
 
 
+### Natas 21
+
+This challenge is also based on session hijacking. This can be done by tampering the cookie value in the related website. However this is much easier than the previous challenge, we need only inject an extra parameter in the post request of the form to change the color. This parameter is well **admin=1**, which can be deduced by reading the website of the sister site for this challenge. Once this is done, just relaod the web page with the set cookie, and the credentials are revealed. 
+
+
+
+### Natas 22
+
+This one is a pretty simple challenge to crack. The main page keeps redirecting you away from it, but when one is using a proxy like Burp, all the redirections and the web page visited are stored in the HTTP history. The webpage we are redirected away from stores the credentials till the redirection limit is reached. The redirect only happens when the query parameter is present in the URL which is also needed to see the credentials.
+
+
+![picnatas22]({{site.url}}/public/picnatas22.PNG)
+
+
+
+### Natas 23
+
+This one is too easy. The acceptability of the input to reveal the password is specified in the code.he first few digits must be number and greater than 10.
+The string must also contain iloveyou. The input 233iloveyou works and reveals the credentials for the next level.
+
+
+
+### Natas24
