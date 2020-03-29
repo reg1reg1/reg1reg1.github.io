@@ -2,7 +2,7 @@
 layout: article
 key: 202003230
 pageview: true
-title: Natas Wargames Solutions (16-30)
+title: Natas Wargames Solutions (16-34)
 tags: ctf
 excerpt: My followup writeup to challenges that I solved in Natas Wargames
 ---
@@ -158,8 +158,50 @@ This one is a pretty simple challenge to crack. The main page keeps redirecting 
 ### Natas 23
 
 This one is too easy. The acceptability of the input to reveal the password is specified in the code.he first few digits must be number and greater than 10.
-The string must also contain iloveyou. The input 233iloveyou works and reveals the credentials for the next level.
+The string must also contain iloveyou. The input **233iloveyou** works and reveals the credentials for the next level.
 
 
 
-### Natas24
+### Natas 24
+
+This challenge pestered me for quite a while. For one thing, the source code does not reveal anything unusual- I thought maybe this challenge requires me to bruteforce the password. The bruteforce approach did not work however. Then I looked at the source code one more time. On looking closely, the source code revealed that the **passwd** variable was not being type checked. Anything we pass will be treated as string, so we cannot break by inserting any sort of special characters- But what if we treated the passwd as an array?
+
+This caused an exception, and this is what was required to get to the next level. The URL of injection then becomes the following
+
+```http
+http://natas24.natas.labs.overthewire.org/?passwd[]=a
+```
+
+
+
+
+
+### Natas 25
+
+This challenge's source code inspection reveals a lot of checks being implemented for preventing different attacks. It also reveals that the requests are getting logged by the web server.
+
+This challenge requires a 2-step attack. The logs can be injected here with php code.  The culprit here is the user-agent which is being logged. Again coming back to the security notion that __All user input is untrusted__. We inject the user-agent with the following php code using our old friend Burp Suite to modify the payload before forwarding it.
+
+```php
+<?php $x=file_get_contents('/etc/natas_webpass/natas26'); echo $x; ?>
+```
+
+
+
+Then what? How do we get the code in the log files to be executed?
+
+We clearly need to perform a local file inclusion attack here , after initial inspection of inputs and context. But, the "../" is being recursively deleted - So could we use this to our advantage?
+
+Note that the log file it is written to has the name natas24_{PHPSESSID}.log. Hence we have to include this file. The lang parameter is used for the local file inclusion attack. Note that we could not have included the natas26_webpass file directly as the source code explicitly checks for that. We are also making the assumption here that log files will be executed as PHP code by the server.
+
+
+
+
+
+### Natas 26
+
+We are given a function to add drawings to the web application page. It can be noted that the drawings are being stored as each request adds incremental drawings to the web page. We have to again, tamper with the cookies to solve this challenge. This challenge is similar to level 11 where we needed to reverse the cookie to alter its contents. 
+
+Here we need to carry out a PHAR exploit or inject a serialized variable to our advantage. `drawFromUserdata()` which does a couple things. One, if you sent along coordinates it draws corresponding lines. Second, if you sent along the ‘drawing’ cookie, it deserializes the contents of the cookie and draws accordingly.
+
+Seeing the word ‘unserialize’ in a hacking challenge should cause an alarm to go off in your head. This is what the deserialization looks like:
