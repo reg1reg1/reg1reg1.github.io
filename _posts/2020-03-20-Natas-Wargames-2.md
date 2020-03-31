@@ -2,7 +2,7 @@
 layout: article
 key: 202003230
 pageview: true
-title: Natas Wargames Solutions (16-30)
+title: Natas Wargames Solutions (16-34)
 tags: ctf
 excerpt: My followup writeup to challenges that I solved in Natas Wargames
 ---
@@ -254,13 +254,117 @@ Then , we just need to fetch the file using the URL.
 
 *"Whitespaces Matter"*
 
+This another beautiful SQL based challenge. This is the first time , I have encountered this challenge in the domain of SQL. Let's get down to look at the source code. 
+
+SQL scheme:- 
+
+```sql
+CREATE TABLE `users` (
+  `username` varchar(64) DEFAULT NULL,
+  `password` varchar(64) DEFAULT NULL
+);
+```
 
 
 
+The SQL code is pretty straightforward. It simply sets up a database with varchar(64). 64 is the length of the field value. This important information would come up later. 
 
 
 
+Functionally, this application is pretty simple. You enter a username and password and if that combo already exists, it displays them back to you. If the username is correct but the password is wrong, you get an error. And finally, if the username doesn’t exist, the application creates said user with the supplied password. Let us analyse the source code closely.
 
+Looking at the **validateUser** and **checkCredentials** function: 
+
+
+
+```php
+function checkCredentials($link,$usr,$pass){
+ 
+    $user=mysql_real_escape_string($usr);
+    $password=mysql_real_escape_string($pass);
+    
+    $query = "SELECT username from users where username='$user' and password='$password' ";
+    $res = mysql_query($query, $link);
+    if(mysql_num_rows($res) > 0){
+        return True;
+    }
+    return False;
+}
+
+
+function validUser($link,$usr){
+    
+    $user=mysql_real_escape_string($usr);
+    
+    $query = "SELECT * from users where username='$user'";
+    $res = mysql_query($query, $link);
+    if($res) {
+        if(mysql_num_rows($res) > 0) {
+            return True;
+        }
+    }
+    return False;
+}
+```
+
+
+
+These functions are basic with one caveat, note that the checkcredential checks for username by the username  and password, what if there are duplicates? The thing is at first glance , the duplicates are not allowed to be added because of the following code snippet., but if they do all the users and passwords (theoretically) would be displayed. 
+
+So, could we add an extra user **natas28** somehow and get the password for both the real **natas28** and our duplicate natas28? Note that the entire array is displayed as the result.
+
+```php
+if(array_key_exists("username", $_REQUEST) and array_key_exists("password", $_REQUEST)) {
+    $link = mysql_connect('localhost', 'natas27', '<censored>');
+    mysql_select_db('natas27', $link);
+   
+
+    if(validUser($link,$_REQUEST["username"])) {
+        //user exists, check creds
+        if(checkCredentials($link,$_REQUEST["username"],$_REQUEST["password"])){
+            echo "Welcome " . htmlentities($_REQUEST["username"]) . "!<br>";
+            echo "Here is your data:<br>";
+            $data=dumpData($link,$_REQUEST["username"]);
+            print htmlentities($data);
+        }
+        else{
+            echo "Wrong password for user: " . htmlentities($_REQUEST["username"]) . "<br>";
+        }        
+    } 
+    else {
+        //user doesn't exist
+        if(createUser($link,$_REQUEST["username"],$_REQUEST["password"])){ 
+            echo "User " . htmlentities($_REQUEST["username"]) . " was created!";
+        }
+    }
+```
+
+Here comes into play the behavior of SQL truncation. Remember the limit of 64 on the input fields of password and username? Well , what happens when you try to supply a larger input? Naturally, SQL truncates the extra characters. Eg:: What if the username was 65 A's? The 65th A gets truncated obviously and the username being added to the database has 64 A's.
+
+What if the username has trailing spaces ?  The thing about SQL is these are removed, but after removing the extra 64 spaces if there are spaces they are not removed.
+However, here is the interesting part, the space is not used during comparison.
+Basically, "user     " and user "user" are returned when using  the following select statement.
+
+```sql
+ select * from users where username='user';
+```
+
+
+
+It is interesting to note that validate user does not truncate the string before comparing. So, this brings us to the strategy.
+
+- We want a second natas28
+- We want to insert a duplicate, with trailing spaces . We must use spaces equal to 64-7(len(natas28))=57, so that the select statement for comparison treats them as equal
+- However, validate user does not truncate, hence we must ensure we add a character after trailing spaces so that we can cause validateUser to fail and allow the insertion of the duplicate. So we add a trailing character like x to fail this function.
+
+
+
+This brings us to our payload for insertion. We can leave the password blank or put a random char, it does not matter.
+
+Username:'natas28<57spaces>x' (65char long string)
+password: x
+
+Next we login as natas28, and password is x. This displays the credentials for the next challenge.                  
 
 
 
@@ -272,5 +376,37 @@ Then , we just need to fetch the file using the URL.
 
 ### Natas 28
 
-ECB codeblock abuse
+__"Even AES is insecure in ECB mode"__
 
+Here, we see we can query using an input, but there is no option to view the source code. When we query something , the query is displayed in the URL header. Let us dive further into that. If some of you have worked on cryptopal challenges before, this is familiar territory. 
+
+See the query from URL header (after URL decode): (I supplied 'a')
+
+```
+G+glEae6W/1XjA7vRm21nNyEco/c+J2TdR0Qp8dcjPKriAqPE2++uYlniRMkobB1vfoQVOxoUVz5bypVRFkZR5BPSyq/LC12hqpypTFRyXA=
+```
+
+ The terminating "=" sign, led me to guess it was base64 encoded. After decoding , I was looking at the raw encrypted bytes.
+
+```
+%[WFm܄ru\
+og$uThQ\o*UDYGOK*,-vr1Qp
+```
+
+The above might be displayed differently, but it is garbage to the untrained eye. 
+
+So, what is our target here. SQL injection. But, we cannot inject from the input field- All characters are being escaped there. So we have to inject the query parameter in the URL header, to do that we need to encrypt our payload in the right way, so it decrypts to our payload. This challenge would require us to understand and break the encryption scheme, and figure out the credentials for the next level.
+
+**Step 1** : What is our target? To get the credentials for natas29 by querying the database. SQL injection, so noting down the SQL query which we would need to encrypt.
+
+
+
+
+
+
+
+
+
+
+
+### Natas 29
