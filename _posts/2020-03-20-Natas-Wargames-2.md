@@ -115,16 +115,14 @@ To understand better, here is the list of functions in the source code with thei
   - The first if(strspn….) statement check if the $sid contains characters that is within the long string of characters. If it is not, return “Invalid SID”. Otherwise, continue.
   - Then, it check to see if the path exist for the file call /mysess_$sid. For example, if $sid is abcdefg, it is checking for the file mysess_abcdefg. If the file exist, continue.
   - Here, we see that the content of the file is save in $data and the foreach loop take each new line of $data and put it in $line. Then, it takes each space separated word in each $line and put them in an array call $parts. If the first part ($parts[0]) is not an empty string, then it will use the first part as the session key and the second part ($parts[1]) as the value corresponding to that key.
-- mywrite($sid, $data) also has several parts
+- **mywrite($sid, $data)** also has several parts
   - The first if(strspn …) does the same check for valid $sid in myread()
   - The same $filename is created using the $sid.
-  - The key is sorted in $_SESSION and the foreach loop take the pair of $key and corresponding $value and add it as a new line in $data. The $data is then write to the $filename. Note that new line is used to explode the key value pair and then written to the file. This is the entry point for our approach, **response splitting** attack. The 
-- mydestroy($sid) always return true.
-- mygarbage($t) always return true.
+  - The key is sorted in $_SESSION and the foreach loop take the pair of $key and corresponding $value and add it as a new line in $data. The $data is then write to the $filename. Note that new line is used to explode the key value pair and then written to the file. This is the entry point for our approach, a **response splitting** attack. 
 - main interface does the following:
-  - session_start().
+  - **session_start().**
   - check name is in the $_REQUEST, if so, set the $_SESSION[“name”] to $_REQUEST[“name”]. If we input “test” as a name, it will correspond “test” as the
-  - print_credentials()
+  - **print_credentials()**
   - set $name to empty string and check if “name” is in the $_SESSION, if so, set the variable $name to $_SESSION[“name”]
 
 The key value pair is being read from the file in the $filename. The key vakye oair is being read, and the value of the "admin" must be 1. 
@@ -155,10 +153,14 @@ This one is a pretty simple challenge to crack. The main page keeps redirecting 
 
 
 
+
+
 ### Natas 23
 
 This one is too easy. The acceptability of the input to reveal the password is specified in the code.he first few digits must be number and greater than 10.
 The string must also contain iloveyou. The input **233iloveyou** works and reveals the credentials for the next level.
+
+
 
 
 
@@ -171,6 +173,8 @@ This caused an exception, and this is what was required to get to the next level
 ```http
 http://natas24.natas.labs.overthewire.org/?passwd[]=a
 ```
+
+
 
 
 
@@ -193,6 +197,8 @@ Then what? How do we get the code in the log files to be executed?
 We clearly need to perform a local file inclusion attack here , after initial inspection of inputs and context. But, the "../" is being recursively deleted - So could we use this to our advantage?
 
 Note that the log file it is written to has the name natas24_{PHPSESSID}.log. Hence we have to include this file. The lang parameter is used for the local file inclusion attack. Note that we could not have included the natas26_webpass file directly as the source code explicitly checks for that. We are also making the assumption here that log files will be executed as PHP code by the server.
+
+
 
 
 
@@ -403,7 +409,7 @@ So, what is our target here. SQL injection. But, we cannot inject from the input
 SELECT joke from joketable where text LIKE ‘%user_input%’;
 ```
 
-
+**Step 2**: Break the encryption scheme. If you try out several different inputs you will notice a pattern. The prefix of the encrypted param does not change as your input gets longer. **The first 32 bytes are always the same.** This means that some text is consistently getting prepended to our text. As well, changing the first character of your input does not change the end of the encrypted text.
 
 
 
