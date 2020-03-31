@@ -587,7 +587,11 @@ http://natas29.natas.labs.overthewire.org/index.pl?file=|cat%20/etc/na%22t%22as_
 
 ### Natas 30
 
-Another PERL based challenge. It is a webform with username and password, and we have to login. Looking at the source code we see that they are using "prepare" for performing SQL queries, hence that should be pretty tight against any SQL injection attempts. So we have to exploit some other flaw in the application. Now we know
+Another PERL based challenge. It is a webform with username and password, and we have to login. Looking at the source code we see that they are using "prepare" for performing SQL queries, hence that should be pretty tight against any SQL injection attempts. 
+
+So we have to exploit some other flaw in the application. So since the code is pretty small, we can identify what is of interest here.
+
+
 
 
 
