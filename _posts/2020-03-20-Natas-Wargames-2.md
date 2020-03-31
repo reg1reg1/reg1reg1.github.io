@@ -19,7 +19,7 @@ These are followup to the challenges post which I put out earlier for the challe
 
 ### Natas 16
 
-This one presents us with the possibility of command injection. But there is a twist - There is a filtering on characters like ';', '|' /[;|&`\'"]/ etc. This removes the possibility of simply appending a command and getting it executed. Remember, our goal here is to read the contents of the file **/etc/natas_webpass/natas17**. 
+This one presents us with the possibility of command injection. But there is a twist - There is a filtering on characters like <pre>';', '|' /[;|&`\'"]/ </pre> etc. This removes the possibility of simply appending a command and getting it executed. Remember, our goal here is to read the contents of the file **/etc/natas_webpass/natas17**. 
 
 The first clue is if we search for something like "__^He__". Note that the "^" is not in the list of illegal characters. We get all the words starting from the letters "He" like He , Hebrew etc. 
 
@@ -378,7 +378,7 @@ Next we login as natas28, and password is x. This displays the credentials for t
 
 __"Even AES is insecure in ECB mode"__
 
-Here, we see we can query using an input, but there is no option to view the source code. When we query something , the query is displayed in the URL header. Let us dive further into that. If some of you have worked on cryptopal challenges before, this is familiar territory. 
+I feel that this was the hardest challenge so far. Here, we see we can query using an input, but there is no option to view the source code. When we query something , the query is displayed in the URL header. Let us dive further into that. If some of you have worked on cryptopal challenges before, this is familiar territory. 
 
 See the query from URL header (after URL decode): (I supplied 'a')
 
@@ -398,6 +398,10 @@ The above might be displayed differently, but it is garbage to the untrained eye
 So, what is our target here. SQL injection. But, we cannot inject from the input field- All characters are being escaped there. So we have to inject the query parameter in the URL header, to do that we need to encrypt our payload in the right way, so it decrypts to our payload. This challenge would require us to understand and break the encryption scheme, and figure out the credentials for the next level.
 
 **Step 1** : What is our target? To get the credentials for natas29 by querying the database. SQL injection, so noting down the SQL query which we would need to encrypt.
+
+```sql
+SELECT joke from joketable where text LIKE ‘%user_input%’;
+```
 
 
 
