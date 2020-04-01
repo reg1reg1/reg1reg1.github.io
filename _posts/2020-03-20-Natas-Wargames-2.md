@@ -9,7 +9,7 @@ excerpt: My followup writeup to challenges that I solved in Natas Wargames
 
 ## Overview
 
-These set of challenges on the Wargames are focussed on Web Application Security Testing and Scanning. Each machine stores the credentials for the next machine. **All passwords are also stored in /etc/natas_webpass/**. In this article, I cover the solutions from 16-30. The next 4 challenges would be posted shortly.
+These set of challenges on the Wargames are focussed on Web Application Security Testing and Scanning. Each machine stores the credentials for the next machine. **All passwords are also stored in ** <pre>**/etc/natas_webpass/**</pre>. In this article, I cover the solutions from 16-30. The next 4 challenges would be posted shortly.
 
 These are followup to the challenges post which I put out earlier for the challenges 1-15.
 
