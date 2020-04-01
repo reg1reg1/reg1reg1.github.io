@@ -9,7 +9,7 @@ excerpt: My followup writeup to challenges that I solved in Natas Wargames
 
 ## Overview
 
-These set of challenges on the Wargames are focussed on Web Application Security Testing and Scanning. Each machine stores the credentials for the next machine. **All passwords are also stored in** <pre>/etc/natas_webpass/</pre>. In this article, I cover the solutions from 16-30. The next 4 challenges would be posted shortly.
+These set of challenges on the Wargames are focussed on Web Application Security Testing and Scanning. Each machine stores the credentials for the next machine. **All passwords are also stored in /etc/natas_webpass/**. In this article, I cover the solutions from 16-30. The next 4 challenges would be posted shortly.
 
 These are followup to the challenges post which I put out earlier for the challenges 1-15.
 
@@ -19,14 +19,10 @@ These are followup to the challenges post which I put out earlier for the challe
 
 ### Natas 16
 
-This one presents us with the possibility of command injection. But there is a twist - There is a filtering on characters like <pre>';', '|' /[;|&`\'"]/ </pre> etc. This removes the possibility of simply appending a command and getting it executed. Remember, our goal here is to read the contents of the file <pre>/etc/natas_webpass/natas17</pre>. 
-
+This one presents us with the possibility of command injection. But there is a twist - There is a filtering on characters like &#x27;;&#x27;, &#x27;|&#x27; /[;|&#x26;&#x60;\&#x27;&#x22;]/ etc. This removes the possibility of simply appending a command and getting it executed. Remember, our goal here is to read the contents of the file <pre>/etc/natas_webpass/natas17</pre>. 
 The first clue is if we search for something like "__^He__". Note that the "^" is not in the list of illegal characters. We get all the words starting from the letters "He" like He , Hebrew etc. 
-
-The question we should be asking is __"What if we could use the contents of the target file to perform the search? "__
-
+The question we should be asking is __"What if we could use the contents of the target file to perform the search?"__
 Look at the expression
-
 ```bash
 ^$(grep -o ^A /etc/natas_webpass/natas17)
 ```
