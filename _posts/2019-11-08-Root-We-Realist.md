@@ -3,7 +3,7 @@ layout: article
 title: Rootwe realist writeup
 key: 201911080
 tags: ctf
-excerpt: This post entails about the walkthrough of getting root on a VM MrRobot which is present on VulnHub. This machine is at a beginner level, and one of the first machines that I broke on VulnHub. You are strongly recommended to try everything on your own before proceeding.
+excerpt: This post entails about the walkthrough of cracking the machine on rootme.org in the realist seciton called root-we and is a web based challenge
 ---
 
 ## Root-We writeup
@@ -12,7 +12,7 @@ excerpt: This post entails about the walkthrough of getting root on a VM MrRobot
 
 ## Description
 
-Recently discovered this website called rootme.org (<a href="https://www.root-me.org/?page=news&lang=en">Link:</a>) which has a lot of machines we can try for Pentesting newbies such as myself. I suggest everyone to check out the website once for learning purpose.
+Recently discovered this website called rootme.org (<a href="https://www.root-me.org/en/Challenges/Realist/Root-We">Link:</a>) which has a lot of machines we can try for Pentesting newbies such as myself. I suggest everyone to check out the website once for learning purpose.
 
 It features a standalone web application unlike VulnHub style of providing VM's to download and pentest. The realist section of this website features challenges which have a certain level of real vulnerabilities hidden behind a functional appearing application. The machine description also features resources from which one can make out that the challenge involves exploiting LFI (Local File Inclusion) in the website.
 
