@@ -48,10 +48,6 @@ There are very few blacks and whites when it comes to privacy - There are  a lot
 
 
 
-
-
-
-
 ## Privacy By Design Implementation : An example
 
 Let's say you are the privacy engineer working for a large organization which has little to no privacy embedded into design, and you handle or deal with a large amount of customer data. How do you go about strengthening the privacy back-bone of your organization?
@@ -67,8 +63,12 @@ The privacy team is responsible for collectively recognizing what part of custom
 One of the core desired outcomes of privacy by design is to use the bare minimum data required for providing functionality. 
 
 1. **Ingress**: Identify through which streams your organization is ingesting data. What ways does the PII flow into your organization?.  What are the control limitations on this data? What are the security controls in place (encryption , access control) to ensure this data is ingested properly, and what is the motive of collecting this data? These are some of the important questions that should manifest themselves into the implementations of data ingestion for PII.
-2. **Storage**: How is the data handled at rest? Who has access to this data? What are the control limitations in place? What are the security controls in place for ensuring the access control of the data? You must also identify who is accountable for storing this data? If you have taken on the responsibility in the privacy agreement, can you store it on third-party cloud? You must also make sure that this storage has auditability, where it can be assessed whether all the ones accountable are adhering to the practices set by the privacy team. 
-3. **Egress**: The important questions to ask here would be as follows: Which parties is the data being shared with? What are the visibility on this data sharing with the data owners (customers typically) and what are the controls in place so that it is not misused? The third-party does not get the accountability transferred, since the collecting organization is responsible and has not freed itself from that responsibility in any way, so it must manage and have oversight on what the third-party is doing with that data. The purpose again for the choice sharing the data must be clearly justified by the actors implementing the functionality. 
+2. **Storage**: How is the data handled at rest? Who has access to this data? What are the control limitations in place? What are the security controls in place for ensuring the access control of the data? You must also identify who is accountable for storing this data? If you have taken on the responsibility in the privacy agreement, can you store it on third-party cloud? For what time duration is it necessary for the retention of data? Many regulations dictate that if an owner of data no longer uses a service, that service must not store that data. You must also make sure that this storage has auditability, where it can be assessed whether all the ones accountable are adhering to the practices set by the privacy team. 
+3. **Egress**: The important questions to ask here would be as follows: Which parties is the data being shared with? What are the visibility on this data sharing with the data owners (customers typically) and what are the controls in place so that it is not misused? The third-party does not get the accountability transferred, since the collecting organization is responsible and has not freed itself from that responsibility in any way, so it must manage and have oversight on what the third-party is doing with that data. The purpose again for the choice sharing the data must be clearly justified by the actors implementing the functionality. Note that many data protection laws, allow for the revoke of consent, and hence you must have mechanisms in place for this. 
+
+Some other questions not highlighted above would be to have a legal perspective on the right to collect this data as well. If the data has to be removed, due to the user no longer a customer, or consent revoke, how is it carried out? The backups of this data, fall under this as well and must be incorporated into the removal mechanism.  The logs too, fall under the same line of questioning.
+
+ 
 
 
 
