@@ -38,9 +38,11 @@ We live in a digital world where we leave digital footprints. The services that 
 6. **Respect for user privacy**
 7. **Privacy as default**
 
-When implementing, the target of the organization refer to these guidelines in their own manner to promote a better product/service design aligning with privacy guidelines , and become better custodians of use data.
+When implementing, the target of the organization refer to these guidelines in their own manner to promote a better product/service design aligning with privacy guidelines , and become better custodians of use data. 
 
-There are very few blacks and whites when it comes to privacy - There are  a lot of grey areas, and privacy implementations are not industry standards like PCI-DSS for security. There are no verifications for privacy by design implementations.
+
+
+There are very few blacks and whites when it comes to privacy - There are  a lot of grey areas, and privacy implementations are not industry standards like PCI-DSS for security. There are no verifications for privacy by design implementations. There are many companies which have their own interpretations of the 7 foundational principles, and the companies adopt this in an effort to become GDPR compliant.
 
 
 
@@ -51,6 +53,14 @@ There are very few blacks and whites when it comes to privacy - There are  a lot
 ## Privacy By Design Implementation : An example
 
 Let's say you are the privacy engineer working for a large organization which has little to no privacy embedded into design, and you handle or deal with a large amount of customer data. How do you go about strengthening the privacy back-bone of your organization?
+
+
+
+### Step 1 : Identify data feeds and data storage:
+
+The first step would be to identifying where the personal data or customer data is located in your organization - This is important, as only then would you be in a position to categorize it and associate the risks associated with that data.
+
+The privacy team is responsible for collectively recognizing what part of customer data is PII (Personally Identifiable Information) say names, phone-numbers, ip's ,etc. This would vary from organization to organization.
 
 
 
