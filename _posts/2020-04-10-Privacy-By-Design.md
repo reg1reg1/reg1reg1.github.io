@@ -17,7 +17,9 @@ The side arguing against the ill effects of privacy, primarily government and fe
 
 In 1976, however, something revolutionary happened- researchers Diffie, Hellman and Merkle together solved the "key exchange" problem in cryptography birthing asymmetric encryption. Further research , would create the RSA and this would eventually power the SSL encryption in the Internet years later. The researchers working on it , faced backlash and pushback from the government, and did not just have to just solve the problem, but defend their "right to solve it". The paper called "New directions in Cryptography" introduced the "Diffie-Hellman" or "Diffie-Hellman-Merkle" key-exchange , in layman terms, allowed almost magically , two people to exchange keys over an insecure channel. As the famous Bruce Schneier implied that, "Imagine 2 people in a room full of mathematicians and cryptographers trying to listen and make sense of their conversation. These 2 people would appear to yell nonsense to the room, but at the end of it each of them would know a shared secret, and the mathematicians and cryptographers cannot figure it out, even though they listened to everything."
 
-Once it became evident that encryption is going to be made available for general use, two sides defending and arguing against it would rise. There are some interesting books on this area, and if you would like to read up, these are 2 I recommend personally.
+Once it became evident that encryption is going to be made available for general use, two sides defending and arguing against it would rise beginning the long debates and discussions in privacy. Debates, discussions are always important in such a landscape, and we have come a way from where the agencies could force anyone to give up their data, to a point where they now do it secretly. In practice, one may argue that nothing has changed, the agencies could do whatever they want, just be discreet about it. However, the very fact that the dialogue and pushback caused the users to be more aware of the digital footprints, and understand how the anonymity can be easily breached etc. More companies now aim to become GDPR compliant, and more users use VPN's when accessing the internet, and TOR project and DuckDuckGo provide a means to strengthen the notions of privacy online.
+
+While I could rant on and on about this, I suggest you all to read on your own - There are some interesting books on this area, and if you would like to read up, these are 2 I recommend personally.
 
 1. [ Crypto Rebels by Stephen Levy ][ https://www.amazon.com/Crypto-Rebels-Government-Privacy-Digital/dp/0140244328/ref=sr_1_fkmr0_1?dchild=1&keywords=crypto+wars+rebels+fought+back&qid=1587384129&sr=8-1-fkmr0]
 2.  [Secrets & Lies by Bruce Schneier][https://www.amazon.com/Secrets-Lies-Digital-Security-Networked-ebook/dp/B004UARVS0/ref=sr_1_1?crid=1TS9XC6YC9ZRB&dchild=1&keywords=secrets+and+lies+bruce+schneier&qid=1587384584&sprefix=Secrets+and+lies+bruce%2Caps%2C148&sr=8-1]
@@ -60,7 +62,7 @@ Let's say you are the privacy engineer working for a large organization which ha
 
 The first step would be to identifying where the personal data or customer data is located in your organization - This is important, as only then would you be in a position to categorize it and associate the risks associated with that data.
 
-The privacy team is responsible for collectively recognizing what part of customer data is PII (Personally Identifiable Information) say names, phone-numbers, ip's ,etc. This would vary from organization to organization.
+The privacy team is responsible for collectively recognizing what part of customer data is PII (Personally Identifiable Information) say names, phone-numbers, ip's ,etc. This would vary from organization to organization, but once done, the team needs to then 
 
 
 
