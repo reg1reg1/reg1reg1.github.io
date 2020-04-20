@@ -62,7 +62,12 @@ Let's say you are the privacy engineer working for a large organization which ha
 
 The first step would be to identifying where the personal data or customer data is located in your organization - This is important, as only then would you be in a position to categorize it and associate the risks associated with that data.
 
-The privacy team is responsible for collectively recognizing what part of customer data is PII (Personally Identifiable Information) say names, phone-numbers, ip's ,etc. This would vary from organization to organization, but once done, the team needs to then 
+The privacy team is responsible for collectively recognizing what part of customer data is PII (Personally Identifiable Information) say names, phone-numbers, ip's ,etc. This would vary from organization to organization, jurisdiction to jurisdiction, but once done, the team needs to then identify where this data is and primarily 3 major points with regards to this data with regards to the architecture.
+
+One of the core desired outcomes of privacy by design is to use the bare minimum data required for providing functionality. 
+
+1. **Ingress**: Identify through which streams your organization is ingesting data. What ways does the PII flow into your organization?.  What are the control limitations on this data? What are the security controls in place (encryption , access control) to ensure this data is ingested properly, and what is the motive of collecting this data? These are some of the important questions that should manifest themselves into the implementations of data ingestion for PII.
+2. 
 
 
 
