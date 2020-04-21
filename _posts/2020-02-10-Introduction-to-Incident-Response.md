@@ -42,8 +42,8 @@ The courses which helped me are-
 
 You will find yourself configuring interfaces, and configurations a lot, and it is always helpful to be familiar with the Linux Shell. There are lot of books in Linux, but I found the following to be really helpful. Another important thing is the concept of **Linux Firewalls** which is the foundation stepping stone for learning how to configuring them .
 
-1. Linux Firewalls :https://www.amazon.com/Linux-Firewalls-Detection-Response-iptables/dp/1593271417
-2. Linux  Networking Cookbook: https://www.amazon.com/Linux-Networking-Cookbook-Easy-Use/dp/0596102488
+1. [Linux Firewalls :](https://www.amazon.com/Linux-Firewalls-Detection-Response-iptables/dp/1593271417)
+2. [Linux  Networking Cookbook:](https://www.amazon.com/Linux-Networking-Cookbook-Easy-Use/dp/0596102488)
 
 
 
@@ -75,14 +75,14 @@ With large number of machines, and systems to manage, you would require knowledg
 
 There are books which serve as great reference guide for the process, and as a handbook. My personal favorites are -
 
-1. **Applied Network Security Monitoring**: https://www.amazon.com/Applied-Network-Security-Monitoring-Collection/dp/0124172083 
-2. **Network Security Assessment:** https://www.amazon.com/Network-Security-Assessment-Know-Your/dp/149191095X/
+1.[**Applied Network Security Monitoring**:](https://www.amazon.com/Applied-Network-Security-Monitoring-Collection/dp/0124172083) 
+2. [**Network Security Assessment:**](https://www.amazon.com/Network-Security-Assessment-Know-Your/dp/149191095X/)
 
 
 
 I personally worked on this as an Advanced Project in my third semester of graduate studies.
 
-Github Repo for the work done:> https://github.com/reg1reg1/NSM-Implementation 
+[Github Repo for the work done:>](https://github.com/reg1reg1/NSM-Implementation) 
 
   
 
