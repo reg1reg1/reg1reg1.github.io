@@ -21,8 +21,8 @@ Once it became evident that encryption is going to be made available for general
 
 While I could rant on and on about this, I suggest you all to read on your own - There are some interesting books on this area, and if you would like to read up, these are 2 I recommend personally.
 
-1. [ Crypto Rebels by Stephen Levy ][ https://www.amazon.com/Crypto-Rebels-Government-Privacy-Digital/dp/0140244328/ref=sr_1_fkmr0_1?dchild=1&keywords=crypto+wars+rebels+fought+back&qid=1587384129&sr=8-1-fkmr0]
-2.  [Secrets & Lies by Bruce Schneier][https://www.amazon.com/Secrets-Lies-Digital-Security-Networked-ebook/dp/B004UARVS0/ref=sr_1_1?crid=1TS9XC6YC9ZRB&dchild=1&keywords=secrets+and+lies+bruce+schneier&qid=1587384584&sprefix=Secrets+and+lies+bruce%2Caps%2C148&sr=8-1]
+1. [Crypto Rebels by Stephen Levy](https://www.amazon.com/Crypto-Rebels-Government-Privacy-Digital/dp/0140244328/ref=sr_1_fkmr0_1?dchild=1&keywords=crypto+wars+rebels+fought+back&qid=1587384129&sr=8-1-fkmr0)
+2.  [Secrets & Lies by Bruce Schneier](https://www.amazon.com/Secrets-Lies-Digital-Security-Networked-ebook/dp/B004UARVS0/ref=sr_1_1?crid=1TS9XC6YC9ZRB&dchild=1&keywords=secrets+and+lies+bruce+schneier&qid=1587384584&sprefix=Secrets+and+lies+bruce%2Caps%2C148&sr=8-1)
 
 So now,that we have an idea about privacy and how it came to be, let us discuss privacy by design.
 
@@ -87,7 +87,7 @@ The privacy as default means, that the user does not have to explicitly opt out 
 I follow the USENIX conferences which are put up on youtube as they provide a rich information source on privacy challenges that companies face today, and have notable speakers who come to speak in these conferences who have worked in and for privacy for a long time.
 
 I find this book as a good source, though I have just started reading it, and this is my initial impression.
- [**Information Privacy Engineering and privacy by design by Dr William Stallings**][https://www.amazon.com/Information-Privacy-Engineering-Design-Understanding-dp-0135302153/dp/0135302153/ref=mt_paperback]
+ [**Information Privacy Engineering and privacy by design by Dr William Stallings**](https://www.amazon.com/Information-Privacy-Engineering-Design-Understanding-dp-0135302153/dp/0135302153/ref=mt_paperback)
 
 
  I am writing a blog on differential privacy, which should be up soon.
