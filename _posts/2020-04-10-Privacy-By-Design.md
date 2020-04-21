@@ -87,7 +87,10 @@ The privacy as default means, that the user does not have to explicitly opt out 
 I follow the USENIX conferences which are put up on youtube as they provide a rich information source on privacy challenges that companies face today, and have notable speakers who come to speak in these conferences who have worked in and for privacy for a long time.
 
 I find this book as a good source, though I have just started reading it, and this is my initial impression.
- 
+ [**Information Privacy Engineering and privacy by design by Dr William Stallings**][https://www.amazon.com/Information-Privacy-Engineering-Design-Understanding-dp-0135302153/dp/0135302153/ref=mt_paperback]
+
+
+ I am writing a blog on differential privacy, which should be up soon.
 
 
 
