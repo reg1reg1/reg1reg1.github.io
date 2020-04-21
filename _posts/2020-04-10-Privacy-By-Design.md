@@ -74,7 +74,20 @@ Some other questions not highlighted above would be to have a legal perspective 
 
 ### Step 3: Implement the solution according to assessment
 
-An important foundation principle is "privacy embedded into design". The assessment phase already takes motivation from the foundation principles of privacy by design, when aski
+An important foundation principle is "privacy embedded into design". The assessment phase already takes motivation from the foundation principles of privacy by design, when asking the important questions in the previous phases. However, an important principle is also privacy embedded into design, and what this means that privacy is not treated as an add on, but built into product and architecture design from the very start.
+
+The privacy as default means, that the user does not have to explicitly opt out or turn off multiple settings to have the privacy, but the default provided by the service should abide by it from the get go. The privacy engineers are the user's voice in the company, and hence a strong dialogue and communication from the product design phase is crucial for privacy by design to succeed.
+
+
+
+
+
+## Learning More:
+
+I follow the USENIX conferences which are put up on youtube as they provide a rich information source on privacy challenges that companies face today, and have notable speakers who come to speak in these conferences who have worked in and for privacy for a long time.
+
+I find this book as a good source, though I have just started reading it, and this is my initial impression.
+ 
 
 
 
