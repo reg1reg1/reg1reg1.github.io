@@ -19,7 +19,7 @@ In 1976, however, something revolutionary happened- researchers Diffie, Hellman 
 
 
 
-PS: I got the golden opportunity to sit in one of Prof Martin Hellman's conferences in NYU Tandon where he spoke about how he got into cryptography, and the hardships he faced to bring forth his research that eventually gave the world the Diffie Hellman key exchange. It is here, where he completed his Bachelor's degree in Electrical engineering in 1966.</i>
+<i>PS: I got the golden opportunity to sit in one of Prof Martin Hellman's conferences in NYU Tandon where he spoke about how he got into cryptography, and the hardships he faced to bring forth his research that eventually gave the world the Diffie Hellman key exchange. It is here, where he completed his Bachelor's degree in Electrical engineering in 1966.</i>
 
 |      ![martin.jpg]({{site.url}}/public/img/martin.jpg)       |
 | :----------------------------------------------------------: |
