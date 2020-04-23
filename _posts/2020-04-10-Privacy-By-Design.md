@@ -16,6 +16,11 @@ The wikipedia definition of privacy is __"Privacy is the ability of an individua
 The side arguing against the ill effects of privacy, primarily government and federal agencies, have painted privacy as the tool of 4 horsemen of apocalypse, a tool if unrestricted would prevent prosecution and conviction of criminals, a tool which would be exploited by enemies of the state - something they felt would far outweigh the pros. To an extent they made a point - You do not want those distributing child pornography , or a drug distributor to use this tool, or anonymity to evade law. However, the solution to strip everyone of privacy is surely not the solution. For a long time (and still), government influenced major advances in cryptography. There was not enough research being done, and government wanted backdoors or keys into encryption being made available to public. They wanted right to tap phone lines if they deem fit, and search anyone's online activity once they felt it "needs" to be done.  When Snowden leak happened in 2013, these were brought into more light. For a long time, in the post-world war era, cryptography remained a tool of the government and corporations. During this time, encryption required meeting of both parties to exchange keys, and hence there was little use in the public domain with little research being done in the area not government directed or initiated. 
 
 In 1976, however, something revolutionary happened- researchers Diffie, Hellman and Merkle together solved the "key exchange" problem in cryptography birthing asymmetric encryption. Further research , would create the RSA and this would eventually power the SSL encryption in the Internet years later. The researchers working on it , faced backlash and pushback from the government, and did not just have to just solve the problem, but defend their "right to solve it". The paper called "New directions in Cryptography" introduced the "Diffie-Hellman" or "Diffie-Hellman-Merkle" key-exchange , in layman terms, allowed almost magically , two people to exchange keys over an insecure channel. As the famous Bruce Schneier implied that, "Imagine 2 people in a room full of mathematicians and cryptographers trying to listen and make sense of their conversation. These 2 people would appear to yell nonsense to the room, but at the end of it each of them would know a shared secret, and the mathematicians and cryptographers cannot figure it out, even though they listened to everything."
+PS: I got the golden opportunity to sit in one of Prof Martin Hellman's conferences in NYU Poly where he spoke about how he got into cryptography, and the hardships he faced to bring forth his research that eventually gave the world the Diffie Hellman key exchange. It is here in NYU Poly, where he completed his Bachelor's degree in Electrical engineering.
+
+| ![martin.jpg]({{site.url}}/public/img/martin.jpg) |
+| :-----------------------------------------------: |
+|       Prof. Martin Hellman, NYU Poly, 2018        |
 
 Once it became evident that encryption is going to be made available for general use, two sides defending and arguing against it would rise beginning the long debates and discussions in privacy. Debates, discussions are always important in such a landscape, and we have come a way from where the agencies could force anyone to give up their data, to a point where they now do it secretly. In practice, one may argue that nothing has changed, the agencies could do whatever they want, just be discreet about it. However, the very fact that the dialogue and pushback caused the users to be more aware of the digital footprints, and understand how the anonymity can be easily breached etc. For eg: The fbi can not make an unwarranted unrestricted search of your entire profile without procedure or resolving to devious and discreet means. More companies now aim to become GDPR compliant, you get cookie acceptance pop-ups, and more users use VPN's when accessing the internet, and TOR project and DuckDuckGo provide a means to strengthen the notions of privacy online.
 
@@ -89,8 +94,15 @@ I follow the USENIX conferences which are put up on youtube as they provide a ri
 I find this book as a good source, though I have just started reading it, and this is my initial impression.
  [**Information Privacy Engineering and privacy by design by Dr William Stallings**](https://www.amazon.com/Information-Privacy-Engineering-Design-Understanding-dp-0135302153/dp/0135302153/ref=mt_paperback)
 
-
  I am writing a blog on differential privacy, which should be up soon.
+
+
+
+
+
+
+
+
 
 
 

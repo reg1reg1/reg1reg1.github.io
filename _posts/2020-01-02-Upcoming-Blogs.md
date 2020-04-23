@@ -15,8 +15,6 @@ This is an updating list of my future blogs, which I plan to write in the near f
 
 - **Layer 2 common security mechanisms**
 - **Getting started in Wireless Security, and resource guide**
-- **Differential Privacy**
-- **Scaling Privacy by design**
 - **My first ever bug bounty**
 - **GNS3 Lab exercise guide for implementing basic Networking protocols**
 - **How Adiantum is redefining Hardware security**
