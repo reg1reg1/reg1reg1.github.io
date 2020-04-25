@@ -96,7 +96,7 @@ If you are a privacy advocate, you must understand the privacy is a shared respo
 - **Data Minimization**: Using the user's data for only the stated purpose, and collecting as minimum data as possible for the functionality of the service and application.
 - **Right to be forgotten:** The privacy design must allow regulatory revocation of consent, where the user has the ability to withdraw, and this must be implemented with the erasure of all user-data including from backups, logs etc which can pose more technical challenges than what appears during the first glance.
 
-
+Privacy and the technical challenges it poses to traditional way how a software or an architecure is designed can pose a daunting challenge to incorporate- The path to a digital world which is transparent and respecting of the user's privacy is the way to earn the user's trust and invite more users to be comfortable enough to use the service. With better privacy regulatory laws like GDPR and the CCPA, privacy is moving slowly moving from good practice to compliance, and towards a legal obligation.
 
 ## Learning More:
 
