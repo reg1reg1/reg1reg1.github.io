@@ -26,31 +26,41 @@ By no means, this was a one-off case. A similar linkage attack was performed on 
 - "https://www.theguardian.com/technology/2014/jun/27/new-york-taxi-details-anonymised-data-researchers-warn" . 
 - https://www.fastcompany.com/3036573/nyc-taxi-data-blunder-reveals-which-celebs-dont-tip-and-who-frequents-strip-clubs
 
-Once this was established, an alternative solution was needed.   
+We realized that overly accurate statistics can blatantly compromise privacy. Once this was established, an alternative solution was needed.   Differential Privacy was developed by cryptographers, and hence a lot of the mathematical definitions and terminology stems from there.
+
+In 2006, Cynthia Dwork, Frank McSherry, Kobbi Nissim and Adam D formulated a ground-breaking mathematical definition of Differential Privacy, and quantified the privacy loss incurred as 'ε', and also a general purpose mechanism of achieving it. A lot of what I learnt, and the source material for this blog is inspired by her talk on differential privacy 
 
 
 
 ## The Approach of Differential Privacy
 
- To get started, one must understand that this is not a simple problem to solve whatsoever. In theory, even if we were to come up with a solution , there would be many caveats and challenges to implementing it widescale- Eg: If this requires a completely new system, and does not integrate with existing ones, it will not be adopted. Most organizations cannot feasibly scratch their entire analytics based architecture in favor for a new one. Additionally, it must be flexible across data platforms, if the solution only works on a few data architectures, it would not be of much use either.
+ So to begin, we must outline our problem well, and ask some fundamental questions. Firstly, it is important to state our goal *"Learn trends in datasets without compromising the privacy of the individual"*.
+
+Some of the questions we should be asking are:-
+
+- Could we learn same things if an individual is removed from the data set? 
+- But can learning about population as a whole hurt an individual's privacy?  Maybe it can, but this should be irrespective of the fact whether the individual is present in the dataset or not. 
+
+
+With this the english language definition of privacy is as follows : "The outcome of analysis is equally probable whether *any* individual joins the dataset or refrains from joining it". 
+
+The idea behind Cynthia Dwork and her fellow researcher's work was that a person's privacy cannot be compromised from the database if the person was absent from the database. So if the database were to behave indifferently to the analytic queries,whether the said person was present or not, this would preserve privacy. To formulate, it we can think of the person querying the database for analytics as the adversary. The oracle in cryptography terms is the database, and the individual is the target (Alice/Bob).
 
 
 
-Learn same things if an individual is removed from the data set. Did we compromise privacy? A definition of choice. What if a martian finds out that all humans have 2 feet? Note that if a person is removed, we would still learn the same thing. We learnt about humans not the individual. 
 
-But can learning about population hurt an individual's privacy?  
+
+
+
+## Implementing Differential Privacy
+
+To get started, one must understand that this is not a simple problem to solve whatsoever. In theory, even if we were to come up with a solution , there would be many caveats and challenges to implementing it widescale- Eg: If this requires a completely new system, and does not integrate with existing ones, it will not be adopted. Most organizations cannot feasibly scratch their entire analytics based architecture in favor for a new one. Additionally, it must be flexible across data platforms, if the solution only works on a few data architectures, it would not be of much use either.
 
 strike balance between data privacy and providing functionality.  Companies need data from customers to improve on their products but the customers need privacy.
 
 Data anonymization is hard. Simply removing names does not help. 
 
-In 2006, Netflix tried to do this by creating Netflix prize. It was a competition for finding algorithm which could predict user ratings based on an existing dataset. To protect privacy they randomized names, and added some noise to the data , some random ratings which seems solid.
 
-2 researchers Texas University, linkage attack , de anonymizing large sparse dataset research paper.
-
-Govt massachusett. mid 1990s . co related. public data. Zipcode birthday and gender could identify most individuals.
-
-Overly accurate statistics can blatantly compromise privacy. 
 
 
 
