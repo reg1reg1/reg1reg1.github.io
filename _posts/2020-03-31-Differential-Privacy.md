@@ -7,11 +7,17 @@ tags: blog
 excerpt: The digital services we use are extensively data driven. As the digital age advances, our reliance on technology is exponentially increasing. Devices like Alexa listen to what we speak, our locations are used for services like Uber and lyft, and we leave more digital footprints than ever before. This age requires a new definition of privacy where data driven services and analytics can co-exist with privacy - Differential Privacy is the answer.
 ---
 
-## Introduction: Differential Privacy
+## Overview
 
-Privacy preserving data analysis . 50+ year old problem. Census : Needs data for well being of people, but preserve pricacy? How to solve this problem?
+The lines between our identities and digital personas are blurring. We use more digital services than ever before, and  like the unfiltered exhaust pipes of trucks, bellow out a noticeable trail which follows us. The digital services we use are extensively data driven. As the digital age advances, our reliance on technology is exponentially increasing. Devices like Alexa listen to what we speak, our locations are used for services like Uber and Lyft, and we leave more digital footprints than ever before. This age requires a new definition of privacy where data driven services and analytics can co-exist with privacy - Differential Privacy is the answer. 
 
-De-Identify data? another term for de anonymization.
+## Some History
+
+Differential Privacy is not trying to solve something novel here- privacy preserving data analysis is a 50+ year old problem. Every service, or software that is data driven must tackle this. One example is the census which needs data for the well being of people but needs to preserve privacy. In a way, it is a marriage of 2 diametrically opposite outcomes. Privacy of the user and data-analytics from user data.  
+
+
+
+Privacy policies can guide software and architecture designs to have respect of user privacy, however it does not direct how to implement a solution to perform data-analysis on user-data without compromising the user's privacy.
 
 Learn same things if an individual is removed from the data set. Did we compromise privacy? A definition of choice. What if a martian finds out that all humans have 2 feet? Note that if a person is removed, we would still learn the same thing. We learnt about humans not the individual. 
 
