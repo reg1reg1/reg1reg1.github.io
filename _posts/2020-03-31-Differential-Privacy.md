@@ -13,11 +13,28 @@ The lines between our identities and digital personas are blurring. We use more 
 
 ## Some History
 
-Differential Privacy is not trying to solve something novel here- privacy preserving data analysis is a 50+ year old problem. Every service, or software that is data driven must tackle this. One example is the census which needs data for the well being of people but needs to preserve privacy. In a way, it is a marriage of 2 diametrically opposite outcomes. Privacy of the user and data-analytics from user data.  
+Differential Privacy is not trying to solve something novel here- privacy preserving data analysis is a 50+ year old problem. Every service, or software that is data driven must tackle this. One example is the census which needs data for the well being of people but needs to preserve privacy. In a way, it is a marriage of 2 diametrically opposite outcomes- Privacy of the user and data-analytics from user data.
+
+<img src="{{ site.url }}/public/img/diffprivacy/privacy1.jpg"/>
+
+One of the earlier suggested solutions to this was "De-anonymization". De-anonymization attempts to preserve user privacy by removing the sensitive information from the data-set before having allowed access for data-analysis. This may be done by removing it or randomizing columns. This looks to be a good solution at first glance, but as you would see there is a fundamental problem.
+
+Let's go back to 2006, the [Netflix Prize](https://en.wikipedia.org/wiki/Netflix_Prize) was announced, they were looking for collaborative algorithms to predict user ratings for films. I know what you guys are thinking- Netflix existed in 2006??!!. Yes, it did founded in 1997, and it started out as an online DVD rental service.  To protect user's privacy the algorithm had access only to previous ratings and the uses were only being identified by the numbers assigned for the contest. Pretty solid privacy protection?  Two researchers at University of Texas, Austin compromised this and performed a linkage attack, and published the results in a paper ["Robust De-anonymization of Large Sparse Datasets"](https://www.cs.cornell.edu/~shmat/shmat_oak08netflix.pdf). To put it simply they analyzed data-sets of movie ratings which had user information from sources like IMDB, and with good accuracy were able to corelate matches and de-anonymize the netflix data set. They could do it from other data sources, but their approach was novel. I strongly suggest reading the paper to those interested in privacy.  This served as an important lesson - Linkage attacks could possibly de-anonymize your data even if it is preserves privacy isolated, and this could happen years after as well, if there is some data-set that could be used to achieve this. 
+
+By no means, this was a one-off case. A similar linkage attack was performed on NYC taxi data.
+
+- "https://www.theguardian.com/technology/2014/jun/27/new-york-taxi-details-anonymised-data-researchers-warn" . 
+- https://www.fastcompany.com/3036573/nyc-taxi-data-blunder-reveals-which-celebs-dont-tip-and-who-frequents-strip-clubs
+
+Once this was established, an alternative solution was needed.   
 
 
 
-Privacy policies can guide software and architecture designs to have respect of user privacy, however it does not direct how to implement a solution to perform data-analysis on user-data without compromising the user's privacy.
+## The Approach of Differential Privacy
+
+ To get started, one must understand that this is not a simple problem to solve whatsoever. In theory, even if we were to come up with a solution , there would be many caveats and challenges to implementing it widescale- Eg: If this requires a completely new system, and does not integrate with existing ones, it will not be adopted. Most organizations cannot feasibly scratch their entire analytics based architecture in favor for a new one. Additionally, it must be flexible across data platforms, if the solution only works on a few data architectures, it would not be of much use either.
+
+
 
 Learn same things if an individual is removed from the data set. Did we compromise privacy? A definition of choice. What if a martian finds out that all humans have 2 feet? Note that if a person is removed, we would still learn the same thing. We learnt about humans not the individual. 
 
