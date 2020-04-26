@@ -46,7 +46,9 @@ With this the english language definition of privacy is as follows : "The outcom
 
 The idea behind Cynthia Dwork and her fellow researcher's work was that a person's privacy cannot be compromised from the database if the person was absent from the database. So if the database were to behave indifferently to the analytic queries,whether the said person was present or not, this would preserve privacy. To formulate, it we can think of the person querying the database for analytics as the adversary. The oracle in cryptography terms is the database, and the individual is the target (Alice/Bob).
 
-
+| ![diffprivacy.PNG]({{site.url}}/public/img/diffprivacy/diffprivacy.PNG) |
+|:--:|
+| *Indistinguishability in both scenarios to preserve privacy* |
 
 
 
