@@ -50,29 +50,27 @@ The idea behind Cynthia Dwork and her fellow researcher's work was that a person
 |:--:|
 | *Indistinguishability in both scenarios to preserve privacy* |
 
+Let this algorithm which ensures the differential privacy above be A, then we can state that: Algorithm A gives (ε) differential privacy if for all pairs of data sets x,y differing in the data of 1 entity/person and all events S.  This means that dataset x has the individual's data, and y does not. If for all pairs x,y (all such combinations where the dataset of one person is removed):-
 
+Pr[A(x)∈S] = e<sup>ε</sup> . Pr[A(y) ∈ S]
 
+S, here is the set of all possible outcomes of the queries forwarded by adversary to the Oracle. So it could be a SELECT query with a where clause or whatever, and the outcome of the queries are dataset y. or the data storage and the above equation says that the Algorithm A run on the dataset x to return the Outcome 's' and the same algorithm run on dataset y to return the outcome for 's' would differ by a very small quantity e<sup>ε</sup>. If e<sup>ε</sup>is small, then Algorithm A succeeds in this context for differential privacy. The mathematical definition would be known as e<sup>ε</sup>-differentially private algorithm.
 
+###  Differential Privacy mechanisms
+
+Differential privacy mathematically becomes a probabilistic concept,and so does any differential privacy mechanism. For implementation, they used an algorithm with **plausible deniability**. This means that the algorithm would randomly flip data bits to cause the output to be changed. This would be like adding randomness to the query output, and hence the individual's data returned by that query cannot be trusted due to plausible deniability. On the other hand, the randomness added to the large data set would not matter in the overall data or trend analysis. 
+
+There are some other mechanisms as well like **Laplace Distribution** which adds extra output to the queries in forms of Laplace noise to name a few.
 
 ## Implementing Differential Privacy
 
 To get started, one must understand that this is not a simple problem to solve whatsoever. In theory, even if we were to come up with a solution , there would be many caveats and challenges to implementing it widescale- Eg: If this requires a completely new system, and does not integrate with existing ones, it will not be adopted. Most organizations cannot feasibly scratch their entire analytics based architecture in favor for a new one. Additionally, it must be flexible across data platforms, if the solution only works on a few data architectures, it would not be of much use either.
 
-strike balance between data privacy and providing functionality.  Companies need data from customers to improve on their products but the customers need privacy.
-
-Data anonymization is hard. Simply removing names does not help. 
+A lot of companies are yet to adopt differential privacy, as it is still a hard problem to solve feasibly.
 
 
 
 
-
-Mathematical definition of diff privacy.
-
-Algorithm A gives (epsilon) diff privacy if for all pairs of data sets x,y differing in the data of 1 entity/person and all events S.  If for all pairs x,y
-
-Pr[A(x)∈S] = q . Pr[A(y) ∈ S]
-
-S here is the set of all possible outcomes of the queries forwarded by adversary to the Oracle or the data storage and the above equation says that the Algorithm A run on the dataset x to return the Outcome 's' and the same algorithm run on dataset y to return the outcome for 's' would differ by a very small quantity q. If q is small, then Algorithm A succeeds in this context for differential privacy.
 
 
 
