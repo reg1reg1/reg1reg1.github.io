@@ -68,39 +68,7 @@ The paper by Cynthia Dwork and team, on Differential Privacy:-[Algorithmic found
 
 To get started, one must understand that this is not a simple problem to solve whatsoever. In theory, even if we were to come up with a solution , there would be many caveats and challenges to implementing it widescale- Eg: If this requires a completely new system, and does not integrate with existing ones, it will not be adopted. Most organizations cannot feasibly scratch their entire analytics based architecture in favour for a new one. Additionally, it must be flexible across data platforms, if the solution only works on a few data architectures, it would not be of much use either.
 
-A lot of companies are yet to adopt differential privacy, as it is still a hard problem to solve feasibly. For eg:, The randomness and noise approach require that we work with very large data sets or else it would not be feasible.
-
-
-
-
-
-Concept of plausible deniability. Randomly flipping data and answer. 
-
-Laplace distribution paper. Algorithmic Foundation of differential Privacy.
-
-Apple and google use differential privacy. Documented but not open source. Chrome on browser malware, trafic in cities 
-
-Not many companies have adapted diff priv. Only usable for large datasets because of  introduced noise and small datasets would be simply rendered incorrect.
-
-Can data be collected for utility without compromising privacy ? Diff priv attempts to ans that
-
-
-
-Four facets of differential Privacy.
-
-
-
---- Part 3 -----
-
-
-
-NYC taxi data was also compromised. Re-identification attack. Anonymized data that can be linked to identifying data to recover the anonymized information . Netflix example. NYC taxi data , celebrity tips was recovered. Publishing anonymized data? How do you know what could be out there that could link to your data set or 10 years into the future someone publishes another anonymized data set which could be linked 
-
-Differential privacy is not a procedure, but a definition of privacy. A new definition of privacy. What does it mean to have differential Privacy?
-
-<Insert diagram here>
-
-The mathematical definition of differential privacy. No ill to the data contributor is the goal of differential privacy. Epsilon is the measure of the privacy that we get. Diff privacy guarantees this? Why so less usage? Lot of theoretical work, however these are specialized and general purpose implementations are hard, and hence rare.
+A lot of companies are yet to adopt differential privacy, as it is still a hard problem to solve feasibly. For eg:, The randomness and noise approach require that we work with very large data sets or else it would not be feasible. The major roadblock here is of converting the theoretical work into general purpose implemenations.
 
 What would constitute a real-world implementation of differential privacy?
 
