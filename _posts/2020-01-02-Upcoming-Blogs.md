@@ -13,7 +13,7 @@ excerpt: Includes the list of upcoming blogs I am working on, or which are curre
 
 This is an updating list of my future blogs, which I plan to write in the near future and are currently in the draft. The list of blogs which I plan on writing in the near future. 
 
-- **Layer 2 common security mechanisms**
+- **Cryptography: The one where it all began**
 - **Getting started in Wireless Security, and resource guide**
 - **My first ever bug bounty**
 - **GNS3 Lab exercise guide for implementing basic Networking protocols**

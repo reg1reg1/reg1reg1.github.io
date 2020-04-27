@@ -90,7 +90,13 @@ The privacy as default means, that the user does not have to explicitly opt out 
 
 ## Conclusion
 
-If you are a privacy advocate, you must understand the privacy is a shared responsibility, and you have to be the voice of the people, and advocating for privacy to be built into the design of the product. I think the following 3 foundation principles are really helpful to inculcate in thought process when trying to improve the privacy posture of the organization. (*Courtesy: Jennifer Anderson @Uber, USENIX 2019*)
+If you are a privacy advocate, you must understand the privacy is a shared responsibility, and you have to be the voice of the people, and advocating for privacy to be built into the design of the product. 
+
+<img src="{{ site.url }}/public/img/privacy2.gif"/>
+
+
+
+I think the following 3 foundation principles are really helpful to inculcate in thought process when trying to improve the privacy posture of the organization. (*Courtesy: Jennifer Anderson @Uber, USENIX 2019*)
 
 - **Least Privilege**: This is a term often used in the context of security as well, in here it means that the data access is limited based on roles and responsibilities. Even when the data access is restricted, a singular flat model applied to everyone across the organization is a bad design.
 - **Data Minimization**: Using the user's data for only the stated purpose, and collecting as minimum data as possible for the functionality of the service and application.
