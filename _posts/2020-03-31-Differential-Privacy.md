@@ -74,39 +74,34 @@ What would constitute a real-world implementation of differential privacy?
 
 Differential privacy mathematically becomes a probabilistic concept,and so does any differential privacy mechanism. For implementation, they used an algorithm with **plausible deniability**. This means that the algorithm would randomly flip data bits to cause the output to be changed. This would be like adding randomness to the query output, and hence the individual's data returned by that query cannot be trusted due to plausible deniability. On the other hand, the randomness added to the large data set would not matter in the overall data or trend analysis. 
 
-There are some other mechanisms as well like **Laplace Distribution** which adds extra output to the queries in forms of Laplace noise to name a few.Some other different mechanisms for differential privacy
+There are some other mechanisms as well like **Laplace Distribution** which adds extra output to the queries in forms of Laplace noise to name a few.Some other different mechanisms for differential privacy.
 
 - PINQ
 - Elastic sensitivity
 - Sample and Aggregate
 - Restricted sensitivity
 
-Easy integration with existing data environments. Must support multible database engines. Exisiting systems might need data 
+Uber has been doing some excellent work in privacy engineering. In 2018, in an USENIX talk they introduced the "CHORUS" framework. It was a novel framework as it touched base upon all the points covered in real-world implementation requirements and more.
 
-
-
-
-
-UBER: Chorus framework. Usable by non-experts. Analyst does not need to understand diff priv. Has brod supp for analyt queries. Modular design to support wide variety of mechanisms. 
-Designed for real-world use.
-
-
-
-What makes Chorus so good?
+The following is from my notes of their USENIX talk on What makes Chorus so good?
 
 - Rewrites SQL queries, while earlier approaches modify the database mechanisms, chorus does not require any such changes to the database engine or data. This satisfies easy integration with existing data environments.
 - What it does is modifies the SQL queries in place to convert them to intrinsically private queries. It is a query rewriting system.
 - Query has embedded diff privacy, it can be run on any database, and these would generate differentially private results and this would be returned to the analyst.
 
+One of the underlying mechanism used by  Chorus, is "Elastic Sensitivity" developed at UC Berkley. This adds Laplace noise to the query, however with a twist. The amount of noise adde depends on the queries' sensitivity, and scaled to that. The sensitivity of the query is determined by the "Elastic sensitivity" which computes an efficient upper bound on the quergdask das dsa     
+
 **Example Mechanism: Elastic Sensitivity (Developed at UC berkley)**
 
-Sensitive query result. Add noise. differentially privacy result. noise is drawn from the laplace distribution. Amount of noise depends and scaled to queries' sensitivity. Now the next question is how do we decide the sensitivity of a query? This is determined by the approach termed elastic sensitivity. Some queries are more sensitive to information of individual.
+Sensitive query result. Add noise. differentially privacy result. noise is drawn from the laplace distribution. Amount of noise depends and scaled to queries' sensitivity. Now the next question is how do we decide the sensitivity of a query? This is determined by the approach termed elastic sensitivity. Some queries are more sensitive to information of individual. The exciting  part is it supports query joins as well.
 
-Elastic sensitivity: Efficiently computed upper bound on query sensitivity. THE novel part is it supports joins.
+To grossly oversimplify this, Chorus uses it to rewrite the queries using this elastic sensitivity as a parameter before sending it off to the existing database, acting as a middle man between the analyst and the data-store. This also ensures that the compatibility is maintained across different data environments. 
+
+## Conclusion
+
+Differential privacy is here to stay and multiple companies such as Google, Apple , Microsoft and Uber are trying to integrate this into their data-environments. Thanks for reading to the end of the blog. I might write a blog on the Chorus framework, once I have a better understanding of it and delve into the implementation details, for now I have just explained it from a high level functional perspective.  
 
 
-
-Rewriter for elastic sensitivity. 
 
 
 
