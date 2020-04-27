@@ -9,7 +9,7 @@ excerpt: The digital services we use are extensively data driven. As the digital
 
 ## Overview
 
-The lines between our identities and digital personas are blurring. We use more digital services than ever before, and  like the unfiltered exhaust pipes of trucks, bellow out a noticeable trail which follows us. The digital services we use are extensively data driven. As the digital age advances, our reliance on technology is exponentially increasing. Devices like Alexa listen to what we speak, our locations are used for services like Uber and Lyft, and we leave more digital footprints than ever before. This age requires a new definition of privacy where data driven services and analytics can co-exist with privacy - Differential Privacy is the answer. 
+The lines between our identities and digital personas are blurring. We use more digital services than ever before, and  like the unfiltered exhaust pipes of vehicles, belch out a noticeable trail which follows us. The digital services we use are extensively data driven. As the digital age advances, our reliance on technology is exponentially increasing. Devices like Alexa listen to what we speak, our locations are used for services like Uber and Lyft, and we leave more digital footprints than ever before. This age requires a new definition of privacy where data driven services and analytics can co-exist with privacy - Differential Privacy is the answer. 
 
 ## Some History
 
@@ -54,7 +54,7 @@ Let this algorithm which ensures the differential privacy above be A, then we ca
 
 Pr[A(x)∈S] = e<sup>ε</sup> . Pr[A(y) ∈ S]
 
-S, here is the set of all possible outcomes of the queries forwarded by adversary to the Oracle. So it could be a SELECT query with a where clause or whatever, and the outcome of the queries are dataset y. or the data storage and the above equation says that the Algorithm A run on the dataset x to return the Outcome 's' and the same algorithm run on dataset y to return the outcome for 's' would differ by a very small quantity e<sup>ε</sup>. If e<sup>ε</sup>is small, then Algorithm A succeeds in this context for differential privacy. The mathematical definition would be known as e<sup>ε</sup>-differentially private algorithm.
+S, here is the set of all possible outcomes of the queries forwarded by adversary to the Oracle. So it could be a SELECT query with a where clause or whatever, and the outcome of the queries are dataset y. or the data storage and the above equation says that the Algorithm A run on the dataset x to return the Outcome 's' and the same algorithm run on dataset y to return the outcome for 's' would differ by a very small quantity e<sup>ε</sup>. If e<sup>ε</sup>is small, then Algorithm A succeeds in this context for differential privacy. The mathematical definition would be known as e<sup>ε</sup>-differentially private algorithm. 
 
 ###  Differential Privacy mechanisms
 
@@ -62,13 +62,13 @@ Differential privacy mathematically becomes a probabilistic concept,and so does 
 
 There are some other mechanisms as well like **Laplace Distribution** which adds extra output to the queries in forms of Laplace noise to name a few.
 
+The paper by Cynthia Dwork and team, on Differential Privacy:-[Algorithmic foundations of Differential Privacy](https://www.cis.upenn.edu/~aaroth/Papers/privacybook.pdf).
+
 ## Implementing Differential Privacy
 
-To get started, one must understand that this is not a simple problem to solve whatsoever. In theory, even if we were to come up with a solution , there would be many caveats and challenges to implementing it widescale- Eg: If this requires a completely new system, and does not integrate with existing ones, it will not be adopted. Most organizations cannot feasibly scratch their entire analytics based architecture in favor for a new one. Additionally, it must be flexible across data platforms, if the solution only works on a few data architectures, it would not be of much use either.
+To get started, one must understand that this is not a simple problem to solve whatsoever. In theory, even if we were to come up with a solution , there would be many caveats and challenges to implementing it widescale- Eg: If this requires a completely new system, and does not integrate with existing ones, it will not be adopted. Most organizations cannot feasibly scratch their entire analytics based architecture in favour for a new one. Additionally, it must be flexible across data platforms, if the solution only works on a few data architectures, it would not be of much use either.
 
-A lot of companies are yet to adopt differential privacy, as it is still a hard problem to solve feasibly.
-
-
+A lot of companies are yet to adopt differential privacy, as it is still a hard problem to solve feasibly. For eg:, The randomness and noise approach require that we work with very large data sets or else it would not be feasible.
 
 
 
