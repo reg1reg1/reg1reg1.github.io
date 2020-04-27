@@ -56,12 +56,6 @@ Pr[A(x)∈S] = e<sup>ε</sup> . Pr[A(y) ∈ S]
 
 S, here is the set of all possible outcomes of the queries forwarded by adversary to the Oracle. So it could be a SELECT query with a where clause or whatever, and the outcome of the queries are dataset y. or the data storage and the above equation says that the Algorithm A run on the dataset x to return the Outcome 's' and the same algorithm run on dataset y to return the outcome for 's' would differ by a very small quantity e<sup>ε</sup>. If e<sup>ε</sup>is small, then Algorithm A succeeds in this context for differential privacy. The mathematical definition would be known as e<sup>ε</sup>-differentially private algorithm. 
 
-###  Differential Privacy mechanisms
-
-Differential privacy mathematically becomes a probabilistic concept,and so does any differential privacy mechanism. For implementation, they used an algorithm with **plausible deniability**. This means that the algorithm would randomly flip data bits to cause the output to be changed. This would be like adding randomness to the query output, and hence the individual's data returned by that query cannot be trusted due to plausible deniability. On the other hand, the randomness added to the large data set would not matter in the overall data or trend analysis. 
-
-There are some other mechanisms as well like **Laplace Distribution** which adds extra output to the queries in forms of Laplace noise to name a few.
-
 The paper by Cynthia Dwork and team, on Differential Privacy:-[Algorithmic foundations of Differential Privacy](https://www.cis.upenn.edu/~aaroth/Papers/privacybook.pdf).
 
 ## Implementing Differential Privacy
@@ -72,15 +66,16 @@ A lot of companies are yet to adopt differential privacy, as it is still a hard 
 
 What would constitute a real-world implementation of differential privacy?
 
-- Have broad support for analytic queries
-- Usability for non-experts
-- Easy integration with existing architecture and data environments.
+- **Have broad support for analytic queries**: Trend analysis and data analysis have a wide range of queries, differential privacy solutions should not compromise functionalities as it would then make them difficult to adopt.
+- **Usability for non-experts**: Implementing it into different software services and data environments should be easy, and the developers doing this should be able to do this without being privacy or differential privacy experts.
+- **Easy integration with existing architecture and data environments:** The solutions should be easy to integrate with existing data environments without having to build entirely new systems and services from scratch.
 
+### Differential Privacy mechanisms
 
+Differential privacy mathematically becomes a probabilistic concept,and so does any differential privacy mechanism. For implementation, they used an algorithm with **plausible deniability**. This means that the algorithm would randomly flip data bits to cause the output to be changed. This would be like adding randomness to the query output, and hence the individual's data returned by that query cannot be trusted due to plausible deniability. On the other hand, the randomness added to the large data set would not matter in the overall data or trend analysis. 
 
-Different mechanisms for differential privacy
+There are some other mechanisms as well like **Laplace Distribution** which adds extra output to the queries in forms of Laplace noise to name a few.Some other different mechanisms for differential privacy
 
-- Laplace Mechanism
 - PINQ
 - Elastic sensitivity
 - Sample and Aggregate
