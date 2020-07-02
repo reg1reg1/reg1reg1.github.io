@@ -1,10 +1,10 @@
 ---
 layout: article
-key: 202004231
+key: 202006291
 pageview: true
-title: Introduction to Differential Privacy
-tags: blog
-excerpt: The digital services we use are extensively data driven. As the digital age advances, our reliance on technology is exponentially increasing. Devices like Alexa listen to what we speak, our locations are used for services like Uber and lyft, and we leave more digital footprints than ever before. This age requires a new definition of privacy where data driven services and analytics can co-exist with privacy - Differential Privacy is the answer.
+title: Getting handsy with pfSense firewall
+tags: blog network
+excerpt: In this 3 part series, I explore the functionality of the pfSense firewall in my favorite simulator GNS3 and try out as many features as possible. I try to lay out common pitfalls, and clear out common areas of confusions to the best of my ability. Let's hop on the pfSense bandwagon!
 ---
 
 # Pf-sense Firewall, Part-1
