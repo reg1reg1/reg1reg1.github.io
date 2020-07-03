@@ -15,9 +15,13 @@ Open source stateful firewall/software based on the free BSD OS. It is open sour
 
 These notes are for my personal reference on the pfSense firewall, but I thought I should share these in case anyone else has the same confusions and also to avoid common pitfalls. I come from an "iptables" background, where we know the context and terminology is clearly L3 or Network layer. Hence , I have had little confusions with regards to iptable rules. The faint-hearted should not glance at the iptable chain and netfilter diagram, or else that person might give up on learning IPtables entirely - If you do not believe me, have a look [here](https://stuffphilwrites.com/wp-content/uploads/2014/09/FW-IDS-iptables-Flowchart-v2019-04-30-1.png).  That being said, the terminology of pfSense and the rule structure, and some of the implicit behaviour threw me off a lot.
 
+In this section, we will explore how to setup a basic working network environment for pfSense, and configure some run-of-the mill firewall rules.
+
+
+
 ## Pre-requisites
 
-Basic understanding of network concepts and lingo such as packet headers and OSI layers.  I would say some prior experience with a different firewall is handy but not required.
+Basic understanding of network concepts and lingo such as packet headers and OSI layers.  I would say some prior experience with a different firewall comes in handy but not required.
 
 ## Setup and Config
 
@@ -39,8 +43,8 @@ By default lan1 is used to configure and administer the firewall, and has dhcp s
 
 
 | ![diffprivacy.PNG]({{site.url}}/public/img/pfsense/generic.PNG) |
-|:--:|
-| *pfSense acts natively as a router with firewall capabilities* |
+| :----------------------------------------------------------: |
+| Image-1:*pfSense acts natively as a router with firewall capabilities* |
 
 ## Pfsense as a firewall
 
@@ -58,8 +62,8 @@ There are 3 action types "Allow, Block and reject". Reject is a block wherein th
 
 
 | ![rules.PNG]({{site.url}}/public/img/pfsense/rules.PNG) |
-|:--:|
-| *Default rules on the LAN(em1) interface* |
+| :-----------------------------------------------------: |
+|    Image-2:*Default rules on the LAN(em1) interface*    |
 
 Typical rules in pfsense firewall look like above.
 
@@ -67,7 +71,7 @@ You have multiple options at TCP state-level for configuration.
 
 Some of the fields such as Source, Destination are self explanatory. They can take interface addresses or subnet ranges . "{Interface-Name}"-Net and "{Interface-address}" are specified. Interface net matches anything in the subnet range configured for that interface, and Interface-address matches only pfsense's interface address.
 
- ### Making sense of rules
+### Making sense of rules
 
 There are some rules which are present by default like "The Anti-lockout" rule which is explicit but cannot be replaced from top of the list. The default behaviour for all inbound traffic to an interface is deny as stated in the [documentation](https://docs.netgate.com/pfsense/en/latest/book/firewall/rule-methodology.html#default-deny-rule). 
 
@@ -105,7 +109,7 @@ While filling out an interface rule via the GUI , the following properties descr
 1. **Action:** Block,deny and reject are 3 actions on an incoming packet.
 2. **Interface:** The interface is the interface the traffic would arrive into physically
 3. **Source:** This is the source address IP header of the packet.
-4. **Address Family, Port, Protocol: ** Address family refers to the IPv4 or IPv6. The protocol level filtering can only be done on the Network or the transport layer. The port number refers to the destination port number, the source port number cannot be filtered on interface level rules. The traffic at the interface level refers to inbound traffic, so filtering on source port number won't make sense, as the source port is randomized. 
+4. **Address Family, Port, Protocol:** Address family refers to the IPv4 or IPv6. The protocol level filtering can only be done on the Network or the transport layer. The port number refers to the destination port number, the source port number cannot be filtered on interface level rules. The traffic at the interface level refers to inbound traffic, so filtering on source port number won't make sense, as the source port is randomized. 
 5. **Destination:** The destination address in the IP header of the packet.
 
 
@@ -126,13 +130,58 @@ GNS3 was used to setup the network on the remote system as a server.
 
 
 | ![pfSense-1.PNG]({{site.url}}/public/img/pfsense/pfSense-1.PNG) |
-|:--:|
-| *GNS-3 sample network setup* |
+| :----------------------------------------------------------: |
+|             Image-3:*GNS-3 sample network setup*             |
 
+You can access the web GUI by default at the static Class C address 192.168.1.1 (Static Lan-1 interface address) from the Admin Machine. The Web GUI is pretty standard and is easy to use. By default only 2 interfaces are active on the machine Lan (em1) and WAN (em0). Make sure you have atleast 4 interfaces activated from the template of FreeBSD-pfSense in GNS3. You can do this by clicking on the VM and selecting "Configure->Network" and then increasing the number of interfaces.
 
 ## Baby-Steps: Basic Firewall Rules
 
-With the above fundamentals in mind, here's what we want to do. 
+**Alert:** Note that the default-deny rule of WAN or em0 will allow internet connection for the Admin machine. This is because firstly, the Lan interface has an all allow rule on ipv4 and ipv6 as shown in image-2. This means that it will allow all arriving(inbound) packets at Lan1 from any source to pass through and for any destination. You might then ask "What about the default deny rule on WAN?" Keep in mind that the default deny rule in English terms means this. "Deny all packets which ->**arrive**<- at the WAN interface, or whose L2 destination is WAN". 
+
+This will not block outgoing packets. It is important to clarify here, as the devil truly is in the details. The TCP traffic is allowed (HTTP uses TCP) - Lan1 controls this part as the traffic is inbound on Lan-1 interface , (L2 destination header ). The forwarding makes the traffic go "out" the WAN interface, and hence not blocked. This is the reason LAN-1 has internet access despite the deny-all rule in WAN.
+
+So the onus of controlling the traffic to the internet rests on the local interface on which the local/subnet traffic is inbound. For the Admin machine, that interface is Lan1(em1)
+
+
+
+With the above fundamentals in mind, here's what we are about to do. 
+
+1. Configuring DHCP on all the interfaces
+2. Internet access on all subnets.
+3. Allowing Lan-2 to reach web servers in Lan-3 but not SSH or any other protocol.
+4. Lan-3 must be able to ssh into any machine in Lan-2 but not the other way round.
+
+Setting these rules, would give us a fair bit of idea on how pfSense works as a router and a firewall.
+
+### Bringing up interface, configuring DHCP to share some IP's:
+
+1. Do not modify the default rules, on em0 and em1. Make sure that you can reach the Web GUI via the admin machine (Lan1). Login using the default credentials which are *admin:pfsense*.
+
+2. Bring up the other interfaces. Make sure you have configured them to be present via GNS3 or whatever virtualization technology you are using. Once that is done, assign them a static IP address. We won't have a lot of machines in the subnet, but a /24 mask is easier to read and interpret. Note that each interface must have a static IP address, before a DHCP server can be configured on them. Click on Interfaces-> {Interface-Name} and then enable the interface. Assign it a static ip address with a /24 or any proper subnet mask of your choosing.
+
+3. Do this for the 2 interfaces em2 and em3 and do not forget to save and apply your changes.
+
+4. Once this is done, DHCP can be enabled on the interfaces.  Go to Services->{Interface-Name}. Enable the DHCP server after selecting the address pool and then apply the changes.
+
+5. For the Alpine OS , you need to change the network configuration for them to request IP from the DHCP servers. This would be the IP address of the interface for each subnet. If em2 has IP X, this needs to be configured as the DHCP server for all the machines in the Lan-2 subnet.
+
+6. For the Ubuntu machines, you can try whether DHCP server is working by doing the following to explicitly request an IP.
+
+   ```bash
+   sudo dhclient {interface}
+   ```
+
+
+
+### Access to Internet for all subnets:
+
+1. This is easy to do. For this simply enable the simple rule of all Ipv4 traffic from any source to any destination like what Lan1 has by default. You may add the ipv6 rule as well.
+2. The rule has the same structure as the IPv4 rule shown in Image 2.
+3. Check that all machines have internet access via web browser or via pinging.
+4. The WAN rule will prevent machines outside to initiate HTTP connections with machines in the subnet.
+
+
 
 
 
