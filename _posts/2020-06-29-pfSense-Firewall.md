@@ -147,10 +147,13 @@ So the onus of controlling the traffic to the internet rests on the local interf
 
 With the above fundamentals in mind, here's what we are about to do. 
 
-1. Configuring DHCP on all the interfaces
-2. Internet access on all subnets.
+1. Configuring DHCP on all the interfaces 
+2. Internet access on all subnets. 
 3. Allowing Lan-2 to reach web servers in Lan-3 but not SSH or any other protocol.
 4. Lan-3 must be able to ssh into any machine in Lan-2 but not the other way round.
+5. Lan-1 must be able to access all subnets via all protocols, but the others cannot do so for Lan-1 unless explicitly stated in the rules below.
+6. The Web-UI must be accessible only via Lan-1 and not by any other subnet. 
+7. Make sure the rules added are minimalistic. Nothing is too restrictive. Everything not mentioned under the rules should be allowed, and not blocked. The rules should not enforce anything not intended or mentioned above.
 
 Setting these rules, would give us a fair bit of idea on how pfSense works as a router and a firewall.
 
@@ -180,6 +183,31 @@ Setting these rules, would give us a fair bit of idea on how pfSense works as a 
 2. The rule has the same structure as the IPv4 rule shown in Image 2.
 3. Check that all machines have internet access via web browser or via pinging.
 4. The WAN rule will prevent machines outside to initiate HTTP connections with machines in the subnet.
+
+
+
+
+
+### Restricting access selectively
+
+1. We will move the default internet rule to the bottom and add selective default block rules at the top so that we achieve what we want. We will
+   add the default allow all Internet rule at the bottom, which is an exact copy of the rule of Lan-1. Adding rules that restrict access will now be added on top of this rule, and when a packet that matches a restrictive rule is encountered, it won't proceed down the rules as rules are read top-down, and stopped at first match. 
+2. Since Lan-1 does not need to restrict access, the Lan-1 rules do not need to be touched.
+3. Add the restriction rules on the interface the restriction is applied to. If you need to restrict Lan-2 , add rules to Lan-2, as those rules will control the inbound traffic on the Lan-2 interface.
+4. So, all said and done these are the rules on each of the interfaces. They work, and they are minimalist. The rules on Lan-1 as mentioned are untouched and depicted by Image-2. 
+
+If you get stuck, or have questions feel free to use the disqus comment section.
+
+
+
+| ![em2.PNG]({{site.url}}/public/img/pfsense/em2.PNG) |
+| :----------------------------------------------------------: |
+|             Image-4:*Rules on Lan-2(em2) interface*             |
+
+
+| ![em3.PNG]({{site.url}}/public/img/pfsense/em3.PNG) |
+| :----------------------------------------------------------: |
+|             Image-5:*Rules on Lan-3(em3) interface*             |
 
 
 
