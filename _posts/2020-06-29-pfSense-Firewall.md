@@ -2,9 +2,9 @@
 layout: article
 key: 202006291
 pageview: true
-title: Exploring pfSense Firewall (1/3)
+title: Exploring pfSense Firewall (1/2)
 tags: blog network
-excerpt: In this 3 part series, I explore the functionality of the pfSense firewall in my favorite simulator GNS3 and try out as many features as possible. I try to lay out common pitfalls, and clear out common areas of confusions to the best of my ability. Let's hop on the pfSense bandwagon!
+excerpt: In this 2 part series, I explore the functionality of the pfSense firewall in my favorite simulator GNS3 and try out as many features as possible. I try to lay out common pitfalls, and clear out common areas of confusions to the best of my ability. Let's hop on the pfSense bandwagon!
 ---
 
 # Pf-sense Firewall, Part-1
