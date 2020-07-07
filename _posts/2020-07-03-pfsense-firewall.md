@@ -122,6 +122,7 @@ I stress this because once the concepts are clear, what we do through the GUI , 
 ### Network setup
 
 1. The minimalistic network layout for this exercise requires more network experience than previous endeavours.  The topology looks like what is shown below.
+
 | ![squid.PNG]({{site.url}}/public/img/pfsense/pfSenseTunnel.PNG) |
 | :----------------------------------------------------------: |
 |          Image-5:*Network Layout for IPSec site to site (tunnel)*  |
@@ -141,7 +142,7 @@ I stress this because once the concepts are clear, what we do through the GUI , 
 
    | ![dhcprenewal.PNG]({{site.url}}/public/img/pfsense/dhcprenewal.PNG) |
    | :----------------------------------------------------------: |
-   |          Image-5:*Network Layout for IPSec site to site (tunnel)*  |
+   |          Image-5:*DHCP forced renewal*  |
 
    The next step is to configure the interfaces connecting the router to the pfSense. Since only 2 machines are present here, we may use PPP here . I went ahead and configured it via LAN. Here I used a /30 subnet . For siteA's pfSense, I used 10.0.0.0/30 and for siteB's pfSense 10.0.1.0/30. Note that the ping check  might fail due to firewall rules.
 
@@ -176,12 +177,12 @@ I stress this because once the concepts are clear, what we do through the GUI , 
     |        Image-9: Firewall rules on IPSec interface         |
 
 12. We need to remove the default block rules on the WAN interface and allow traffic for the ISAKMP protocol so that the VPN connection may be suitably established.  So the first thing we need to do for both the pfSense's WAN interface is to remove the factory rules. Now we need to allow ISAKMP traffic (UDP 500) as shown below.
+    
     | ![siteA5.PNG]({{site.url}}/public/img/pfsense/siteA6.PNG) |
     | :-------------------------------------------------------: |
     |         Image-10: Firewall rules on WAN interface         |
     
 13. The next thing is to go ahead and save the rules. Make sure you have done so for both the pfSense. Once this is done, you can establish the VPN connection by going to **Status->IPSec->Connect**. If you have configured everything correctly, you should see an established connection on the status tab. Moreover, ubnew-1 can now ping ubnew-2 (Site - site connectivity in tunnel mode)
-    
     
     | ![siteA4.PNG]({{site.url}}/public/img/pfsense/siteA4.PNG) |
     | :-------------------------------------------------------: |
