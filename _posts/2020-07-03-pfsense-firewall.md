@@ -39,7 +39,6 @@ pfSense can act as a load balancer for your webservers. The setup involves setti
 2. Web server or containers for web servers. Here I used a container I created for another project. If you want, you may use the same container image which runs a web server on port 5000. Note however, that session persistence is not managed by the pfSense loadbalancer, and has to be done externally.
 3. pfSense on FreeBSD and one machine for accessing and administering the pfSense using the web GUI.
 
-
 | ![failover.PNG]({{site.url}}/public/img/pfsense/failover.PNG) |
 | :----------------------------------------------------------: |
 |          Image-1:*pfSense GNS3 loadbalancer setup*           |
@@ -54,7 +53,7 @@ pfSense can act as a load balancer for your webservers. The setup involves setti
 4. In this scenario we have 3 web server containers. We have IP addresses 10.0.0.a, 10.0.0.b, 10.0.0.c for each of the web server containers. The em3 has the ip address in the same subnet at 10.0.0.1. 
 5. Click on **Services->Load Balancer->Pools** from the Web-sense GUI. Add the webserver Ip's to the pool as shown below.
 
-| ![failover.PNG]({{site.url}}/public/img/pfsense/loadvirt.PNG) |
+| ![failover.PNG]({{site.url}}/public/img/pfsense/loadvirtpool.PNG) |
 | :----------------------------------------------------------: |
 |          Image-2:*Create the virtual server pool*           |
 
@@ -123,7 +122,7 @@ I stress this because once the concepts are clear, what we do through the GUI , 
 
 1. The minimalistic network layout for this exercise requires more network experience than previous endeavours.  The topology looks like what is shown below.
 
-| ![squid.PNG]({{site.url}}/public/img/pfsense/pfSenseTunnel.PNG) |
+| ![pfSensetunnel.PNG]({{site.url}}/public/img/pfsense/pfSensetunnel.PNG) |
 | :----------------------------------------------------------: |
 |          Image-5:*Network Layout for IPSec site to site (tunnel)*  |
 
