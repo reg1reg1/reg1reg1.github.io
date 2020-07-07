@@ -7,9 +7,6 @@ tags: blog network
 excerpt: pfSense is not just a firewall, it has several inbuilt package support and functionalities such acting as a router, acting as a loadbalancer, and also package support for Squid Proxy. In this blog, I will go over some of these functionalities of pfSense and how to implement and test them.
 ---
 
-# Exploring Pf-sense Firewall, Part-2
-
-
 
 ## Overview 
 
