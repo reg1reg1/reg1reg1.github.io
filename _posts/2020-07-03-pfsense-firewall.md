@@ -80,7 +80,7 @@ You would need a OS with browser and access to the internet intercepted by the p
 
 | ![squid.PNG]({{site.url}}/public/img/pfsense/squidProxy.PNG) |
 | :----------------------------------------------------------: |
-|          Image-3:*Add the server pool to the Squid Proxy*  |
+|          Image-3:*Network Layout Squid Proxy*  |
 
 2. Before you go ahead, install the squid proxy package into the pfSense. This can be done from the WebGUI. Select **System->Package Manager->Available Packages**. You can search for squid proxy package from the search bar and then install it.
 3. Once installed, it should show up in the installed pacakges.
