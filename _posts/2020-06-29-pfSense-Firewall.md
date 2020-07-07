@@ -7,7 +7,7 @@ tags: blog network
 excerpt: In this 2 part series, I explore the functionality of the pfSense firewall in my favorite simulator GNS3 and try out as many features as possible. I try to lay out common pitfalls, and clear out common areas of confusions to the best of my ability. Let's hop on the pfSense bandwagon!
 ---
 
-# Pf-sense Firewall, Part-1
+# Exploring Pf-sense Firewall, Part-1
 
 ## Overview 
 
